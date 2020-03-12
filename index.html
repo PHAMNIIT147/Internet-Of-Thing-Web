@@ -2,7 +2,7 @@
  * @ Author: Pham Thanh Phong
  * @ Create Time: 2020-03-06 22:09:48
  * @ Modified by: Your name
- * @ Modified time: 2020-03-10 14:33:55
+ * @ Modified time: 2020-03-13 00:50:34
  * @ Description:
  -->
 <!DOCTYPE html>
@@ -13,40 +13,58 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="images/gif/icon.gif">
-    <link rel="stylesheet" href="fonts/icomoon/style.css">
     <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="css/nouislider.min.css">
-    <link rel="stylesheet" href="css/bootstrap-datetimepicker.css">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link rel="stylesheet" href="css/style.css">
-
 </head>
 
 <body>
 
+    <nav class="navbar navbar-dark" style="background-color: #202040">
+        <a class="navbar-brand" href="#">
+            <img src="images/gif/logo.gif" alt="images/logo" width="30" height="30"> Pong Smart
+        </a>
+        <ul class="nav justify-content-end">
+            <li class="nav-item">
+                <a class="nav-link" href="#">
+                    <img src="fonts/svgs/brands/github.svg" alt="github icon" width="20" height="20">
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="">
+                    <img src="fonts/svgs/brands/discord.svg" alt="discord icons" width="20" height="20">
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="">
+                    <img src="fonts/svgs/brands/telegram.svg" alt="telegram icons" width="20" height="20">
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">
+                    <img src="fonts/svgs/brands/linkedin.svg" alt="linkedin icon" width="20" height="20">
+                </a>
+            </li>
+        </ul>
+    </nav>
 
-    <div class="bg-image" style="background-image: url('images/background_home_page.jpg')">
+    <div class="bg-image" style="background-image: url('images/background_iot.png')">
         <div class="container">
             <div class="row justify-content-center align-items-center">
-                <div class="col-md-7 mx-auto text-center align-self-center">
-                    <h2 class="font-weight-bold mb-0 text-white">STATUS: <span class="status-from-database"> </span> | Alarm Kit</h2>
+                <div class="col-sm-6 mx-auto text-center align-self-center">
+                    <h1 class="font-weight-bold mb-0 text-white">STATUS: <span class="status-from-database"> </span> | Alarm Kit</h1>
                     <p class="text-white lead">The operating status of the device is normal</p>
                 </div>
+                <div class=" col-sm-6 jumbotron" style="background-color: #202040;">
+                    <h2>Temperature</h2>
+                    <div class="progress" style="height: 20px;">
+                        <div class="progress-bar" role="progressbar" style="width: 55%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">55%</div>
+                    </div>
+                </div>
             </div>
-
         </div>
     </div>
 
-
-    <!-- $primary:       $blue !default;
-$secondary:     $gray-600 !default;
-$success:       $green !default;
-$info:          $cyan !default;
-$warning:       $yellow !default;
-$danger:        $red !default;
-$light:         $gray-100 !default;
-$dark:          $gray-800 !default;
- -->
     <div class="site-section">
         <div class="container">
             <div class="row mb-4">
@@ -102,9 +120,9 @@ $dark:          $gray-800 !default;
             </span>
         </p>
     </div>
-
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js" integrity="sha384-6khuMg9gaYr5AxOqhkVIODVIvm9ynTT5J4V1cfthmT+emCG6yVmEZsRHdxlotUnm" crossorigin="anonymous"></script>
     <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.4.1.min.js"></script>
-
     <!-- Firebase App (the core Firebase SDK) is always required and must be listed first -->
     <script src="https://www.gstatic.com/firebasejs/7.10.0/firebase.js"></script>
     <script src="js/main.js"></script>
