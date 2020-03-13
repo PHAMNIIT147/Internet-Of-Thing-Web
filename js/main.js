@@ -25,9 +25,10 @@ $(document).ready(function() {
     var temperature;
     // create get element status
     var dataStatus = database.ref();
+    //create image hangar
 
-    const temperatureElement = document.getElementById('temperature');
-    const hemuidityElement = document.getElementById('humidity');
+    const temperatureElement = document.getElementById('display-status-temperature');
+    const hemuidityElement = document.getElementById('display-status-humidity');
 
     const temperatureReference = database.ref('dth11').child('temperature');
     const humidityReference = database.ref('dth11').child('humidity');
@@ -50,13 +51,21 @@ $(document).ready(function() {
             // changes clas of CSS
             $(".status-from-database").text("Worst");
             $(".lead").text("EMERGENCY ALRAM");
+
             document.getElementById("status-color").style.color = "#ff0000";
-            console.log("The operating status of the device is worst");
+            document.getElementById("display-status-temperature").style.color = "#ff0000";
+            document.getElementById("infor-temperature").innerText = "The temperature inside the hangar is an increase";
+            document.getElementById("status-hangar-image").innerHTML = "<img src='/fonts/icons/hangar-fire-icon.png' width='200' height='auto'>";
+
+            console.log("status worst");
         } else if (status == 0 || temperature < 50) {
             $(".status-from-database").text("Best");
-            $(".lead").text("The operating status of the device is normal");
+            $(".lead").text("The operating status of the hangar is best");
+
             document.getElementById("status-color").style.color = "#ffffff";
-            console.log("The operating status of the device is best");
+            document.getElementById("display-status-temperature").style.color = "#ffffff";
+            document.getElementById("status-hangar-image").innerHTML = "<img src='/fonts/icons/hangar-stable-icon.png' width='200' height='auto'>";
+            console.log("status best");
         }
     });
 
@@ -72,14 +81,4 @@ $(document).ready(function() {
             status = 1;
         }
     });
-
-    temperatureReference.limitToLast(1).on("value", function(temperatureSnapshot) {
-        temperatureSnapshot.forEach(function(snapshot) {
-            var childData = snapshot.val();
-            console.log('temperature: ' + childData);
-            temperatureElement.innerText = childData;
-        });
-    });
-
-
 });
