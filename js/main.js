@@ -55,7 +55,7 @@ $(document).ready(function() {
             document.getElementById("status-color").style.color = "#ff0000";
             document.getElementById("display-status-temperature").style.color = "#ff0000";
             document.getElementById("infor-temperature").innerText = "The temperature inside the hangar is an increase";
-            document.getElementById("status-hangar-image").innerHTML = "<img src='/fonts/icons/hangar-fire-icon.png' width='200' height='auto'>";
+            document.getElementById("status-hangar-image").innerHTML = "<img src='fonts/icons/hangar-fire-icon.png' width='200' height='auto'>";
 
             console.log("status worst");
         } else if (status == 0 || temperature < 50) {
@@ -64,7 +64,7 @@ $(document).ready(function() {
 
             document.getElementById("status-color").style.color = "#ffffff";
             document.getElementById("display-status-temperature").style.color = "#ffffff";
-            document.getElementById("status-hangar-image").innerHTML = "<img src='/fonts/icons/hangar-stable-icon.png' width='200' height='auto'>";
+            document.getElementById("status-hangar-image").innerHTML = "<img src='fonts/icons/hangar-stable-icon.png' width='200' height='auto'>";
             console.log("status best");
         }
     });
