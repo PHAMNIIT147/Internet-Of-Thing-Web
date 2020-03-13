@@ -2,7 +2,7 @@
  * @ Author: Pham Thanh Phong
  * @ Create Time: 2020-03-06 22:09:48
  * @ Modified by: Your name
- * @ Modified time: 2020-03-13 00:50:34
+ * @ Modified time: 2020-03-13 17:23:28
  * @ Description:
  -->
 <!DOCTYPE html>
@@ -51,54 +51,64 @@
     <div class="bg-image" style="background-image: url('images/background_iot.png')">
         <div class="container">
             <div class="row justify-content-center align-items-center">
-                <div class="col-sm-6 mx-auto text-center align-self-center">
-                    <h1 class="font-weight-bold mb-0 text-white">STATUS: <span class="status-from-database"> </span> | Alarm Kit</h1>
+                <div class="col-sm-5 mx-0 text-center">
+                    <h1 class="font-weight-bold mb-0 text-white">STATUS: <span class="status-from-database"> </span> | Overall</h1>
                     <p class="text-white lead">The operating status of the device is normal</p>
                 </div>
-                <div class=" col-sm-6 jumbotron" style="background-color: #202040;">
-                    <h2>Temperature</h2>
-                    <div class="progress" style="height: 20px;">
-                        <div class="progress-bar" role="progressbar" style="width: 55%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">55%</div>
+                <div class="card-deck col-sm-7 align-items-center">
+                    <div class="card bg-danger text-white text-center " style="max-width: auto;">
+                        <div class="card-header font-weight-bold text-center" style="font-size: 18px;">
+                            <img class="navbar-toggler-icon" src="fonts/icons/temperature-icon.png" alt=""> Temperature in gagare
+                        </div>
+                        <h2 id="temperature" class="card-title text-white display-2">24</h2>
+                        <p id="status-temperature" class=" card-text text-white" style="font-size: 15px;">The temperature in the garage is stable</p>
+                    </div>
+                    <div class="card bg-success text-white text-center " style="max-width: auto;">
+                        <div class="card-header font-weight-bold text-center" style="font-size: 18px;">
+                            <img class="navbar-toggler-icon" src="fonts/icons/Humidity-icon.png" alt=""> Humidity in gagare
+                        </div>
+                        <h2 id="humidity" class="card-title text-white display-2">65</h2>
+                        <p id="status-humidity" class=" card-text text-white" style="font-size:15px ;">The humidity in the garage is stable</p>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 
-    <div class="site-section">
-        <div class="container">
-            <div class="row mb-4">
-                <div class="col-md-7">
-                    <h2 class="heading-21921">Device</h2>
+    <div class="site-section ">
+        <div class="container ">
+            <div class="row mb-4 ">
+                <div class="col-md-7 ">
+                    <h2 class="heading-21921 ">Device</h2>
                 </div>
             </div>
-            <div class="row text-white align-items-center text-center h-100">
-                <button class="col-md-4 bg-primary p-5 status-button" style="height:130px; border: none;" type="submit">
-                    <h5 class="text-white">#1</h5>
+            <div class="row text-white align-items-center text-center h-100 ">
+                <button class="col-md-4 bg-primary p-5 status-button " style="height:130px; border: none; " type="submit ">
+                    <h5 class="text-white ">#1</h5>
                 </button>
-                <button class="col-md-4 bg-secondary p-5 " style="height:130px; border: none;">
-                    <h5 class="text-white">#2</h5>
+                <button class="col-md-4 bg-secondary p-5 " style="height:130px; border: none; ">
+                    <h5 class="text-white ">#2</h5>
                 </button>
-                <button class="col-md-4 bg-success p-5 " style="height:130px; border: none;">
-                    <h5 class="text-white">#3</h5>
+                <button class="col-md-4 bg-success p-5 " style="height:130px; border: none; ">
+                    <h5 class="text-white ">#3</h5>
                 </button>
-                <button class="col-md-4 bg-info p-5 " style="height:130px; border: none;">
-                    <h5 class="text-white">#4</h5>
+                <button class="col-md-4 bg-info p-5 " style="height:130px; border: none; ">
+                    <h5 class="text-white ">#4</h5>
                 </button>
-                <button class="col-md-4 bg-warning p-5 " style="height:130px; border: none;">
-                    <h5 class="text-white">#5</h5>
+                <button class="col-md-4 bg-warning p-5 " style="height:130px; border: none; ">
+                    <h5 class="text-white ">#5</h5>
                 </button>
-                <button class="col-md-4 bg-danger p-5 " style="height:130px; border: none;">
-                    <h5 class="text-white">#6</h5>
+                <button class="col-md-4 bg-danger p-5 " style="height:130px; border: none; ">
+                    <h5 class="text-white ">#6</h5>
                 </button>
-                <button class="col-md-4 bg-indigo p-5 " style="height:130px; border: none;">
-                    <h5 class="text-white">#6</h5>
+                <button class="col-md-4 bg-indigo p-5 " style="height:130px; border: none; ">
+                    <h5 class="text-white ">#6</h5>
                 </button>
-                <button class="col-md-4 bg-dark p-5 " style="height:130px; border: none;">
-                    <h5 class="text-white">#7</h5>
+                <button class="col-md-4 bg-dark p-5 " style="height:130px; border: none; ">
+                    <h5 class="text-white ">#7</h5>
                 </button>
-                <button class="col-md-4 bg-teal p-5 " style="height:130px; border: none;">
-                    <h5 class="text-white">#8</h5>
+                <button class="col-md-4 bg-teal p-5 " style="height:130px; border: none; ">
+                    <h5 class="text-white ">#8</h5>
                 </button>
             </div>
         </div>
@@ -107,25 +117,25 @@
 
     <!-- copy right author -->
     <div>
-        <p style="text-align: center;">
-            <span style="font-size: 14px;">
+        <p style="text-align: center; ">
+            <span style="font-size: 14px; ">
                 © 2020 
-                <a href="https://www.postscapes.com/tou-privacy/">PongCare</a> 
+                <a href="https://www.postscapes.com/tou-privacy/ ">PongCare</a> 
                 | 
-                <a href="https://www.postscapes.com/affiliate-disclosure/">Affiliate Disclosure</a> 
+                <a href="https://www.postscapes.com/affiliate-disclosure/ ">Affiliate Disclosure</a> 
                 | 
-                <a href="https://www.postscapes.com/tou-privacy/">Privacy Policy</a>
+                <a href="https://www.postscapes.com/tou-privacy/ ">Privacy Policy</a>
                 | 
-                <a href="/about-smart-home/">About Our Rankings and Reviews</a>
+                <a href="/about-smart-home/ ">About Our Rankings and Reviews</a>
             </span>
         </p>
     </div>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js" integrity="sha384-6khuMg9gaYr5AxOqhkVIODVIvm9ynTT5J4V1cfthmT+emCG6yVmEZsRHdxlotUnm" crossorigin="anonymous"></script>
-    <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.4.1.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js " integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6 " crossorigin="anonymous "></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js " integrity="sha384-6khuMg9gaYr5AxOqhkVIODVIvm9ynTT5J4V1cfthmT+emCG6yVmEZsRHdxlotUnm " crossorigin="anonymous "></script>
+    <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.4.1.min.js "></script>
     <!-- Firebase App (the core Firebase SDK) is always required and must be listed first -->
-    <script src="https://www.gstatic.com/firebasejs/7.10.0/firebase.js"></script>
-    <script src="js/main.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.10.0/firebase.js "></script>
+    <script src="js/main.js "></script>
 </body>
 
 </html>
