@@ -2,7 +2,7 @@
  * @ Author: Pham Thanh Phong
  * @ Create Time: 2020-03-06 22:09:48
  * @ Modified by: Your name
- * @ Modified time: 2020-03-14 00:18:10
+ * @ Modified time: 2020-03-14 01:44:36
  * @ Description:
  -->
 <!DOCTYPE html>
@@ -52,23 +52,26 @@
         <div class="container">
             <div class="row justify-content-center align-items-center">
                 <div class="col-sm-5 mx-0 text-center">
-                    <h1 class="font-weight-bold mb-0 text-white">STATUS: <span class="status-from-database" id="status-color"> </span> | Overall</h1>
-                    <p class="text-white lead">The operating status of the device is normal</p>
+                    <h2 class="font-weight-bold mb-0 text-white">STATUS: <span class="status-from-database" id="status-color"> </span> | Overall</h2>
+                    <span id="status-hangar-image">
+                        <img src="fonts/icons/hangar-stable-icon.png" width="150px" height="auto">
+                    </span>
+                    <p class="text-white lead font-weight-bold">The operating status of the hangar is none</p>
                 </div>
                 <div class=" card-deck col-sm-7 align-items-center ">
-                    <div class="card bg-danger text-white text-center " style="max-width: auto; ">
+                    <div class="card text-white text-center " style="max-width: auto; background-color: #ffdc34;">
                         <div class="card-header font-weight-bold text-center " style="font-size: 18px; ">
-                            <img class="navbar-toggler-icon " src="fonts/icons/temperature-icon.png " alt=" "> Temperature in gagare
+                            <img class="navbar-toggler-icon " src="fonts/icons/temperature-icon.png " alt="Temperature icon"> Temperature in hangar
                         </div>
-                        <h2 class="card-title text-white display-2"> <span id="temperature">NaN</span>°C</h2>
-                        <p id="status-temperature " class=" card-text text-white " style="font-size: 15px; ">The temperature in the garage is stable</p>
+                        <h2 class="card-title text-white display-2"> <span id="display-status-temperature">NaN</span>°C</h2>
+                        <p id="infor-temperature" class=" card-text text-white " style="font-size: 15px; ">The temperature in the hangar is stable</p>
                     </div>
-                    <div class="card bg-success text-white text-center " style="max-width: auto; ">
-                        <div class="card-header font-weight-bold text-center " style="font-size: 18px; ">
-                            <img class="navbar-toggler-icon " src="fonts/icons/Humidity-icon.png " alt=" "> Humidity in gagare
+                    <div class="card text-white text-center" style="max-width: auto; background-color: #3e64ff;">
+                        <div class="card-header font-weight-bold text-center" style="font-size: 18px; ">
+                            <img class="navbar-toggler-icon" src="fonts/icons/Humidity-icon.png " alt=" Humidity-icon"> Humidity in hangar
                         </div>
-                        <h2 class="card-title text-white display-2"> <span id="humidity">NaN</span>%</h2>
-                        <p id="status-humidity " class=" card-text text-white " style="font-size:15px ; ">The humidity in the garage is stable</p>
+                        <h2 class="card-title text-white display-2"> <span id="display-status-humidity">NaN</span>%</h2>
+                        <p id="status-humidity" class="card-text text-white" style="font-size:15px ; ">The humidity in the hangar is stable</p>
                     </div>
                 </div>
             </div>
