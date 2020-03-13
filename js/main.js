@@ -22,22 +22,46 @@ $(document).ready(function() {
     var database = firebase.database();
     //varibale global
     var status;
+    var temperature;
+    // create get element status
+    var dataStatus = database.ref();
 
-    database.ref().on("value", function(snapshot) {
-        status = snapshot.val().status; //return null when listen is no data
-        if (status == 1) {
+    const temperatureElement = document.getElementById('temperature');
+    const hemuidityElement = document.getElementById('humidity');
+
+    const temperatureReference = database.ref('dth11').child('temperature');
+    const humidityReference = database.ref('dth11').child('humidity');
+
+
+
+    /* test online */
+    temperatureReference.on("value", function(temperatureSnapshot) {
+        temperature = temperatureSnapshot.val();
+        temperatureElement.innerText = temperature;
+    });
+
+    humidityReference.on("value", function(humiditySnapshot) {
+        hemuidityElement.innerText = humiditySnapshot.val();
+    });
+
+    dataStatus.on("value", function(snapshot) {
+        status = snapshot.val();
+        if (status == 1 || temperature > 50) {
             // changes clas of CSS
             $(".status-from-database").text("Worst");
             $(".lead").text("EMERGENCY ALRAM");
-            console.error("The operating status of the device is worst");
-        } else {
+            document.getElementById("status-color").style.color = "#ff0000";
+            console.log("The operating status of the device is worst");
+        } else if (status == 0 || temperature < 50) {
             $(".status-from-database").text("Best");
-            $(".lead").text("The operating status of the device is normal")
+            $(".lead").text("The operating status of the device is normal");
+            document.getElementById("status-color").style.color = "#ffffff";
+            console.log("The operating status of the device is best");
         }
     });
 
     $(".status-button").click(function() {
-        var firebaseReference = firebase.database().ref().child("status");
+        var firebaseReference = dataStatus.child("status");
 
         //toggle
         if (status == 1) {
@@ -48,4 +72,14 @@ $(document).ready(function() {
             status = 1;
         }
     });
+
+    temperatureReference.limitToLast(1).on("value", function(temperatureSnapshot) {
+        temperatureSnapshot.forEach(function(snapshot) {
+            var childData = snapshot.val();
+            console.log('temperature: ' + childData);
+            temperatureElement.innerText = childData;
+        });
+    });
+
+
 });
