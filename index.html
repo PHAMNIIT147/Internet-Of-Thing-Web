@@ -2,7 +2,7 @@
  * @ Author: Pham Thanh Phong
  * @ Create Time: 2020-03-06 22:09:48
  * @ Modified by: Your name
- * @ Modified time: 2020-03-14 01:53:20
+ * @ Modified time: 2020-03-15 12:03:50
  * @ Description:
  -->
 <!DOCTYPE html>
@@ -19,41 +19,39 @@
 </head>
 
 <body>
-
-    <nav class="navbar navbar-dark" style="background-color: #202040">
-        <a class="navbar-brand" href="#">
-            <img src="images/gif/logo.gif" alt="images/logo" width="30" height="30"> Pong Smart
-        </a>
-        <ul class="nav justify-content-end">
-            <li class="nav-item">
-                <a class="nav-link" href="https://github.com/PHAMNIIT147?tab=repositories">
-                    <img src="fonts/svgs/brands/github.svg" alt="github icon" width="20" height="20">
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="Phong Pham#4062">
-                    <img src="fonts/svgs/brands/discord.svg" alt="discord icons" width="20" height="20">
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="https://t.me/Pham_Phong">
-                    <img src="fonts/svgs/brands/telegram.svg" alt="telegram icons" width="20" height="20">
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="https://www.linkedin.com/in/pham-phong-b12ab1134/">
-                    <img src="fonts/svgs/brands/linkedin.svg" alt="linkedin icon" width="20" height="20">
-                </a>
-            </li>
-        </ul>
-    </nav>
-
     <div class="bg-image" style="background-image: url('images/background_iot.png')">
+        <nav class="navbar navbar-dark" style="background-color: #202040">
+            <a class="navbar-brand" href="#">
+                <img src="images/gif/logo.gif" alt="images/logo" width="30" height="30"> Pong Smart
+            </a>
+            <ul class="nav justify-content-end">
+                <li class="nav-item">
+                    <a class="nav-link" href="https://github.com/PHAMNIIT147?tab=repositories">
+                        <img src="fonts/svgs/brands/github.svg" alt="github icon" width="20" height="20">
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="Phong Pham#4062">
+                        <img src="fonts/svgs/brands/discord.svg" alt="discord icons" width="20" height="20">
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="https://t.me/Pham_Phong">
+                        <img src="fonts/svgs/brands/telegram.svg" alt="telegram icons" width="20" height="20">
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="https://www.linkedin.com/in/pham-phong-b12ab1134/">
+                        <img src="fonts/svgs/brands/linkedin.svg" alt="linkedin icon" width="20" height="20">
+                    </a>
+                </li>
+            </ul>
+        </nav>
         <div class="container">
             <div class="row justify-content-center align-items-center">
                 <div class="col-sm-5 mx-0 text-center">
-                    <h2 class="font-weight-bold mb-0 text-white">STATUS: <span class="status-from-database" id="status-color"> </span> | Overall</h2>
-                    <span id="status-hangar-image">
+                    <h2 class="font-weight-bold mb-0 text-white">STATUS: <span class="statusFromDatabase" id="statusColor"> </span> | Overall</h2>
+                    <span id="statusHangarImage">
                     </span>
                     <p class="text-white lead font-weight-bold">The operating status of the hangar is none</p>
                 </div>
@@ -62,14 +60,14 @@
                         <div class="card-header font-weight-bold text-center " style="font-size: 18px; ">
                             <img class="navbar-toggler-icon " src="fonts/icons/temperature-icon.png " alt="Temperature icon"> Temperature in hangar
                         </div>
-                        <h2 class="card-title text-white display-2"> <span id="display-status-temperature">NaN</span>°C</h2>
-                        <p id="infor-temperature" class=" card-text text-white " style="font-size: 15px; ">The temperature in the hangar is stable</p>
+                        <h2 class="card-title text-white display-2"> <span id="displayStatusTemperature">NaN</span>°C</h2>
+                        <p id="inforIemperature" class=" card-text text-white " style="font-size: 15px; ">The temperature in the hangar is stable</p>
                     </div>
                     <div class="card text-white text-center" style="max-width: auto; background-color: #3e64ff;">
                         <div class="card-header font-weight-bold text-center" style="font-size: 18px; ">
                             <img class="navbar-toggler-icon" src="fonts/icons/Humidity-icon.png " alt=" Humidity-icon"> Humidity in hangar
                         </div>
-                        <h2 class="card-title text-white display-2"> <span id="display-status-humidity">NaN</span>%</h2>
+                        <h2 class="card-title text-white display-2"> <span id="displayStatusHumidity">NaN</span>%</h2>
                         <p id="status-humidity" class="card-text text-white" style="font-size:15px ; ">The humidity in the hangar is stable</p>
                     </div>
                 </div>
@@ -115,12 +113,9 @@
             </div>
         </div>
     </div>
-
-
     <!-- copy right author -->
-    <div>
-        <p style="text-align: center; ">
-            <span style="font-size: 14px; ">
+    <p style="text-align: center;">
+        <span style="font-size: 14px;">
                 © 2020 
                 <a href=" ">PongCare</a> 
                 | 
@@ -130,13 +125,13 @@
                 | 
                 <a href="https://vaa.edu.vn/ ">About Our Rankings and Reviews</a>
             </span>
-        </p>
-    </div>
+    </p>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js " integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6 " crossorigin="anonymous "></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js " integrity="sha384-6khuMg9gaYr5AxOqhkVIODVIvm9ynTT5J4V1cfthmT+emCG6yVmEZsRHdxlotUnm " crossorigin="anonymous "></script>
     <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.4.1.min.js "></script>
     <!-- Firebase App (the core Firebase SDK) is always required and must be listed first -->
     <script src="https://www.gstatic.com/firebasejs/7.10.0/firebase.js "></script>
+    <script src="js/firebase.js"></script>
     <script src="js/main.js "></script>
 </body>
 
