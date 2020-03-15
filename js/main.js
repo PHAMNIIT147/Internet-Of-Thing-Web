@@ -1,22 +1,27 @@
-var firebaseConfig = {
-    apiKey: "AIzaSyBSh5-BpCcTAAACFIMnqsiBpe1btbgGnWM",
-    authDomain: "pongcare-1575954397558.firebaseapp.com",
-    databaseURL: "https://pongcare-1575954397558.firebaseio.com",
-    projectId: "pongcare-1575954397558",
-    storageBucket: "pongcare-1575954397558.appspot.com",
-    messagingSenderId: "581812671119",
-    appId: "1:581812671119:web:162be1d9bb4767fcccd6fa",
-    measurementId: "G-75VEL53405"
-};
+/**
+ * @ Author: Pham Thanh Phong
+ * @ Create Time: 2020-03-06 22:09:48
+ * @ Modified by: Your name
+ * @ Modified time: 2020-03-15 12:02:44
+ * @ Description:
+ */
 
-// Initialize Firebase
-firebase.initializeApp(firebaseConfig);
+function displayTextStatus(text) {
+    document.getElementById("inforTemperature").innerText = text;
+}
+
+function changeColorStatus(color) {
+    document.getElementById("statusColor").style.color = color;
+}
+
+function displayImageStatus(refImage) {
+    document.getElementById("statusHangarImage").innerHTML = refImage;
+}
 
 
-
-$(document).ready(function() {
+$(function() {
     /**********************************************
-     			PROGRANMMING FIREBASSE
+     			PROGRANMMING CONFIGURATION
     ************************************************/
     // Get a reference to the database service
     var database = firebase.database();
@@ -27,13 +32,38 @@ $(document).ready(function() {
     var dataStatus = database.ref();
     //create image hangar
 
-    const temperatureElement = document.getElementById('display-status-temperature');
-    const hemuidityElement = document.getElementById('display-status-humidity');
+    const temperatureElement = document.getElementById('displayStatusTemperature');
+    const hemuidityElement = document.getElementById('displayStatusHumidity');
 
     const temperatureReference = database.ref('dth11').child('temperature');
     const humidityReference = database.ref('dth11').child('humidity');
 
+    dataStatus.on("value", function(snapshot) {
+        status = snapshot.val();
+        var refImage;
+        var refColor;
+        var refText;
 
+        if (status == 1 || temperature > 50) {
+            // changes clas of CSS
+            $(".statusFromDatabase").text("Worst");
+            $(".lead").text("EMERGENCY ALRAM");
+            refText = "The temperature inside the hangar is an increase";
+            refColor = "#ff0000";
+            refImage = "<img src='fonts/icons/hangar-fire-icon.png' width='200' height='auto'>";
+            console.log("status worst");
+        } else if (status == 0 || temperature < 50) {
+            $(".statusFromDatabase").text("Best");
+            $(".lead").text("The operating status of the hangar is best");
+            refColor = "#ffffff";
+            refText = " The temperature inside the hangar is normal";
+            refImage = "<img src='fonts/icons/hangar-stable-icon.png' width='200' height='auto'>";
+            console.log("status best");
+        }
+        displayImageStatus(refImage);
+        changeColorStatus(refColor);
+        displayTextStatus(refText);
+    });
 
     /* test online */
     temperatureReference.on("value", function(temperatureSnapshot) {
@@ -45,29 +75,6 @@ $(document).ready(function() {
         hemuidityElement.innerText = humiditySnapshot.val();
     });
 
-    dataStatus.on("value", function(snapshot) {
-        status = snapshot.val();
-        if (status == 1 || temperature > 50) {
-            // changes clas of CSS
-            $(".status-from-database").text("Worst");
-            $(".lead").text("EMERGENCY ALRAM");
-
-            document.getElementById("status-color").style.color = "#ff0000";
-            document.getElementById("display-status-temperature").style.color = "#ff0000";
-            document.getElementById("infor-temperature").innerText = "The temperature inside the hangar is an increase";
-            document.getElementById("status-hangar-image").innerHTML = "<img src='fonts/icons/hangar-fire-icon.png' width='200' height='auto'>";
-
-            console.log("status worst");
-        } else if (status == 0 || temperature < 50) {
-            $(".status-from-database").text("Best");
-            $(".lead").text("The operating status of the hangar is best");
-
-            document.getElementById("status-color").style.color = "#ffffff";
-            document.getElementById("display-status-temperature").style.color = "#ffffff";
-            document.getElementById("status-hangar-image").innerHTML = "<img src='fonts/icons/hangar-stable-icon.png' width='200' height='auto'>";
-            console.log("status best");
-        }
-    });
 
     $(".status-button").click(function() {
         var firebaseReference = dataStatus.child("status");
