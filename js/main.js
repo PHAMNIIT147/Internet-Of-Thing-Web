@@ -2,7 +2,7 @@
  * @ Author: Pham Thanh Phong
  * @ Create Time: 2020-03-06 22:09:48
  * @ Modified by: Your name
- * @ Modified time: 2020-03-15 12:02:44
+ * @ Modified time: 2020-03-15 12:26:28
  * @ Description:
  */
 
@@ -12,6 +12,7 @@ function displayTextStatus(text) {
 
 function changeColorStatus(color) {
     document.getElementById("statusColor").style.color = color;
+    document.getElementById("displayStatusTemperature").style.color = color;
 }
 
 function displayImageStatus(refImage) {
