@@ -51,14 +51,14 @@ $(function() {
             $(".lead").text("EMERGENCY ALRAM");
             refText = "The temperature inside the hangar is an increase";
             refColor = "#ff0000";
-            refImage = "<img src='fonts/icons/hangar-fire-icon.png' width='200' height='auto'>";
+            refImage = "<img src='fonts/icons/hangar-fire-icon.png' width='250' height='auto' >";
             console.log("status worst");
         } else if (status == 0 || temperature < 50) {
             $(".statusFromDatabase").text("Best");
             $(".lead").text("The operating status of the hangar is best");
             refColor = "#ffffff";
             refText = " The temperature inside the hangar is normal";
-            refImage = "<img src='fonts/icons/hangar-stable-icon.png' width='200' height='auto'>";
+            refImage = "<img src='fonts/icons/hangar-stable-icon.png' width='250' height='auto'>";
             console.log("status best");
         }
         displayImageStatus(refImage);
