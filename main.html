@@ -52,7 +52,7 @@
     <div class="bg-image" style="background-image: url('images/background_iot.png')">
         <div class="container">
             <div class="row justify-content-center align-items-center">
-                <div class="col-sm-5 mx-0 text-center">
+                <div class="col-sm-4 mx-0 text-center">
                     <h4 class="font-weight-bold mb-0 text-white">STATUS: <span class="statusFromDatabase" id="statusColor"> </span></h4>
                     <!-- with control caroule -->
                     <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
@@ -62,7 +62,7 @@
                                 </span>
                             </div>
                             <div class="carousel-item">
-                                <video id="video" src="fonts/videos/COVID-19 - VTV24.mp4" class="d-block w-100" autoplay muted controls></video>
+                                <iframe class="d-block w-100 h-auto" src="https://www.youtube.com/embed/WlvYxdG1ovc" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                             </div>
                         </div>
                         <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
@@ -74,9 +74,9 @@
                             <span class="sr-only">Next</span>
                         </a>
                     </div>
-                    <p class="text-white lead font-weight-bold">The operating status of the hangar is none</p>
+                    <p class="text-white lead">The operating status of the hangar is none</p>
                 </div>
-                <div class=" card-deck align-items-center ">
+                <div class=" col-sm-4 mx-0 card-deck align-items-center ">
                     <div id="carouselExampleInterval" class="carousel slide" data-ride="carousel">
                         <div class="carousel-inner">
                             <div class="carousel-item active" data-interval="10000">
@@ -94,7 +94,7 @@
                                         <img class="navbar-toggler-icon" src="fonts/icons/Humidity-icon.png " alt=" Humidity-icon"> Humidity in hangar
                                     </div>
                                     <h2 class="card-title text-white display-2"> <span id="displayStatusHumidity">NaN</span>%</h2>
-                                    <p id="status-humidity" class="card-text text-white" style="font-size:15px ; ">The humidity in the hangar is stable</p>
+                                    <p id="status-humidity" class="card-text text-white" style="font-size:15px ; ">The humidity inside the hangar is stable</p>
                                 </div>
                             </div>
                         </div>
@@ -108,6 +108,26 @@
                         </a>
                     </div>
                 </div>
+                <div class=" col-sm-4 mx-0 card-deck align-items-center ">
+                    <div id="carouselExampleInterval1" class="carousel slide" data-ride="carousel">
+                        <div class="carousel-inner">
+                            <div class="carousel-item active" data-interval="10000">
+                                <iframe class="d-block w-100 h-auto" src="https://www.youtube.com/embed/6jPlyWC-b18" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                            </div>
+                            <div class="carousel-item" data-interval="2000">
+                                <iframe class="d-block w-100 h-auto" src="https://www.youtube.com/embed/66v5PUv8GAY" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                            </div>
+                        </div>
+                        <a class="carousel-control-prev" href="#carouselExampleInterval1" role="button" data-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="sr-only">Previous</span>
+                        </a>
+                        <a class="carousel-control-next" href="#carouselExampleInterval1" role="button" data-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="sr-only">Next</span>
+                        </a>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -115,44 +135,28 @@
     <div class="site-section ">
         <div class="container ">
             <div class="row mb-4 ">
-                <div class="col-md-7 ">
+                <div class="col-md-7">
                     <h2 class="heading-21921 ">Device</h2>
                 </div>
             </div>
             <div class="row text-white align-items-center text-center h-100 ">
-                <button class="col-md-4 bg-primary p-5 status-button " style="height:130px; border: none; " type="submit ">
-                    <h5 class="text-white ">#1</h5>
+                <button id="light" class="col-md-4 p-5 status-button " style="height:130px; border: none; " type="submit ">
+                    <h5 class="text-black font-weight-bold">Light</h5>
                 </button>
                 <button class="col-md-4 bg-secondary p-5 " style="height:130px; border: none; ">
-                    <h5 class="text-white ">#2</h5>
+                    <h5 class="text-white ">Fan</h5>
                 </button>
                 <button class="col-md-4 bg-success p-5 " style="height:130px; border: none; ">
-                    <h5 class="text-white ">#3</h5>
+                    <h5 class="text-white ">Air Condition</h5>
                 </button>
                 <button class="col-md-4 bg-info p-5 " style="height:130px; border: none; ">
-                    <h5 class="text-white ">#4</h5>
-                </button>
-                <button class="col-md-4 bg-warning p-5 " style="height:130px; border: none; ">
-                    <h5 class="text-white ">#5</h5>
-                </button>
-                <button class="col-md-4 bg-danger p-5 " style="height:130px; border: none; ">
-                    <h5 class="text-white ">#6</h5>
-                </button>
-                <button class="col-md-4 bg-indigo p-5 " style="height:130px; border: none; ">
-                    <h5 class="text-white ">#6</h5>
-                </button>
-                <button class="col-md-4 bg-dark p-5 " style="height:130px; border: none; ">
-                    <h5 class="text-white ">#7</h5>
-                </button>
-                <button class="col-md-4 bg-teal p-5 " style="height:130px; border: none; ">
-                    <h5 class="text-white ">#8</h5>
+                    <h5 class="text-white ">Heat</h5>
                 </button>
             </div>
         </div>
-    </div>
-    <!-- copy right author -->
-    <p style="text-align: center;">
-        <span style="font-size: 14px;">
+        <!-- copy right author -->
+        <p style="text-align: center;">
+            <span style="font-size: 14px;">
                 © 2020 
                 <a href=" ">PongCare</a> 
                 | 
@@ -162,20 +166,20 @@
                 | 
                 <a href="https://vaa.edu.vn/ ">About Our Rankings and Reviews</a>
             </span>
-    </p>
+        </p>
 
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js " integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6 " crossorigin="anonymous "></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js " integrity="sha384-6khuMg9gaYr5AxOqhkVIODVIvm9ynTT5J4V1cfthmT+emCG6yVmEZsRHdxlotUnm " crossorigin="anonymous "></script>
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-    <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.4.1.min.js "></script>
-    <!-- Firebase App (the core Firebase SDK) is always required and must be listed first -->
-    <script src="https://www.gstatic.com/firebasejs/7.10.0/firebase.js "></script>
-    <script src="js/firebase.js"></script>
-    <script src="js/main.js "></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js " integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6 " crossorigin="anonymous "></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js " integrity="sha384-6khuMg9gaYr5AxOqhkVIODVIvm9ynTT5J4V1cfthmT+emCG6yVmEZsRHdxlotUnm " crossorigin="anonymous "></script>
+        <!-- Optional JavaScript -->
+        <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+        <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+        <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.4.1.min.js "></script>
+        <!-- Firebase App (the core Firebase SDK) is always required and must be listed first -->
+        <script src="https://www.gstatic.com/firebasejs/7.10.0/firebase.js "></script>
+        <script src="js/firebase.js"></script>
+        <script src="js/main.js "></script>
 </body>
 
 </html>
