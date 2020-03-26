@@ -6,6 +6,19 @@
  * @ Description:
  */
 
+/* *******************************
+configuration object inside Hangar
+********************************** */
+const imageStatusHangar = {
+    fire: "<img src='fonts/icons/hangar-fire-icon.png' width='150' height='auto'>",
+    normal: "<img src='fonts/icons/hangar-stable-icon.png' width='150' height='auto'>"
+};
+
+const statusAlarmHangar = {
+    worst: "The temperature inside the hangar is an worst",
+    best: "The temperature inside the hangar is normal"
+};
+
 function displayTextStatus(text) {
     document.getElementById("inforTemperature").innerText = text;
 }
@@ -20,9 +33,11 @@ function displayImageStatus(refImage) {
 }
 
 
+
+
 $(function() {
     /**********************************************
-     			PROGRANMMING CONFIGURATION
+ 			PROGRANMMING CONFIGURATION
     ************************************************/
     // Get a reference to the database service
     var database = firebase.database();
@@ -33,38 +48,40 @@ $(function() {
     var dataStatus = database.ref();
     //create image hangar
 
+
     const temperatureElement = document.getElementById('displayStatusTemperature');
     const hemuidityElement = document.getElementById('displayStatusHumidity');
+    const buttonLight = document.getElementById('light');
 
     const temperatureReference = database.ref('dth11').child('temperature');
     const humidityReference = database.ref('dth11').child('humidity');
 
-    dataStatus.on("value", function(snapshot) {
-        status = snapshot.val();
+    dataStatus.on("value", function() {
         var refImage;
         var refColor;
         var refText;
 
-        if (status == 1 || temperature > 50) {
+        if (temperature > 50) {
             // changes clas of CSS
             $(".statusFromDatabase").text("Worst");
-            $(".lead").text("EMERGENCY ALRAM");
-            refText = "The temperature inside the hangar is an increase";
+            $(".lead").text("EMERGENCY");
+            refText = statusAlarmHangar.worst;
             refColor = "#ff0000";
-            refImage = "<img src='fonts/icons/hangar-fire-icon.png' width='250' height='auto' >";
+            refImage = imageStatusHangar.fire;
             console.log("status worst");
-        } else if (status == 0 || temperature < 50) {
+        } else if (temperature < 50) {
             $(".statusFromDatabase").text("Best");
-            $(".lead").text("The operating status of the hangar is best");
             refColor = "#ffffff";
-            refText = " The temperature inside the hangar is normal";
-            refImage = "<img src='fonts/icons/hangar-stable-icon.png' width='250' height='auto'>";
+            refText = statusAlarmHangar.best;
+            refImage = imageStatusHangar.normal;
             console.log("status best");
         }
         displayImageStatus(refImage);
         changeColorStatus(refColor);
         displayTextStatus(refText);
     });
+
+
 
     /* test online */
     temperatureReference.on("value", function(temperatureSnapshot) {
@@ -76,17 +93,19 @@ $(function() {
         hemuidityElement.innerText = humiditySnapshot.val();
     });
 
-
+    var firebaseReference = dataStatus.child("light");
     $(".status-button").click(function() {
-        var firebaseReference = dataStatus.child("status");
-
         //toggle
         if (status == 1) {
             firebaseReference.set(0);
             status = 0;
+            buttonLight.style.backgroundColor = "#ff0000";
+            console.log('light is on')
         } else {
             firebaseReference.set(1);
             status = 1;
+            buttonLight.style.backgroundColor = "#323232";
+            console.log('light is off')
         }
     });
 });
