@@ -57,6 +57,7 @@ $(function() {
     const humidityReference = database.ref('dth11').child('humidity');
 
     dataStatus.on("value", function() {
+
         var refImage;
         var refColor;
         var refText;
@@ -65,23 +66,26 @@ $(function() {
             // changes clas of CSS
             $(".statusFromDatabase").text("Worst");
             $(".lead").text("EMERGENCY");
+
             refText = statusAlarmHangar.worst;
             refColor = "#ff0000";
             refImage = imageStatusHangar.fire;
+
             console.log("status worst");
         } else if (temperature < 50) {
             $(".statusFromDatabase").text("Best");
+
             refColor = "#ffffff";
             refText = statusAlarmHangar.best;
             refImage = imageStatusHangar.normal;
+
             console.log("status best");
         }
+
         displayImageStatus(refImage);
         changeColorStatus(refColor);
         displayTextStatus(refText);
     });
-
-
 
     /* test online */
     temperatureReference.on("value", function(temperatureSnapshot) {
@@ -99,13 +103,16 @@ $(function() {
         if (status == 1) {
             firebaseReference.set(0);
             status = 0;
+
             buttonLight.style.backgroundColor = "#ff0000";
-            console.log('light is on')
+            console.log('light is on');
+
         } else {
             firebaseReference.set(1);
             status = 1;
+
             buttonLight.style.backgroundColor = "#323232";
-            console.log('light is off')
+            console.log('light is off');
         }
     });
 });
