@@ -10,7 +10,7 @@
 configuration object inside Hangar
 ********************************** */
 const imageStatusHangar = {
-    fire: "<img src='fonts/icons/hangar-fire-icon.png' width='150' height='auto'>",
+    fire: "<img src='fonts/icons/hangar-fire-icon.png' width='250' height='auto'>",
     normal: "<img src='fonts/icons/hangar-stable-icon.png' width='150' height='auto'>"
 };
 
@@ -36,6 +36,10 @@ function displayImageStatus(refImage) {
 
 
 $(function() {
+    /*
+     * query open source feather 
+     */
+    feather.replace();
     /**********************************************
  			PROGRANMMING CONFIGURATION
     ************************************************/
