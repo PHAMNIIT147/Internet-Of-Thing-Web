@@ -10,11 +10,18 @@
 
 ### About the project
 
-<div align=center>
-  <img src="images/webApp.png">
-</div>
+The purpose of this project is to help manage IoT devices on the website application
+
 <p align="center">
   <img src="images/signin.png" width="256" hspace="4">
   <img src="images/home.png" width="256" hspace="4">
   <img src="images/statistical.png" width="256" hspace="4">
 </p>
+
+### Perfomance wed-app 
+
+<div align=center>
+  <img src="images/webApp.png">
+</div>
+
+### Feature
