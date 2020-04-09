@@ -57,8 +57,12 @@ $(function() {
     const hemuidityElement = document.getElementById('displayStatusHumidity');
     const buttonLight = document.getElementById('light');
 
-    const temperatureReference = database.ref('dth11').child('temperature');
-    const humidityReference = database.ref('dth11').child('humidity');
+    const temperatureReference = database.ref('DHT11').child('Temperature');
+
+    const celsiusReference = temperatureReference.child('Celsius');
+    const fahremheitReference = temperatureReference.child('Faremheit');
+
+    const humidityReference = database.ref('DHT11').child('Humidity');
 
     dataStatus.on("value", function() {
 
@@ -92,9 +96,9 @@ $(function() {
     });
 
     /* test online */
-    temperatureReference.on("value", function(temperatureSnapshot) {
+    celsiusReference.on("value", function(temperatureSnapshot) {
         temperature = temperatureSnapshot.val();
-        temperatureElement.innerText = temperature;
+        temperatureElement.innerText = parseInt(temperature);
     });
 
     humidityReference.on("value", function(humiditySnapshot) {
