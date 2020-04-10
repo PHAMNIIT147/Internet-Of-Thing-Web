@@ -10,6 +10,7 @@
 </head>
 
 <body data-gr-c-s-loaded="true" style="background-color: #232931;">
+    <!-- navbar -->
     <nav class="navbar navbar-expand-lg navbar-dark mb-4" style="background-color: #202040">
         <a class="navbar-brand font-weight-bold text-black" href="main.html">
             <img src="fonts/svgs/brands/paypal.svg" alt="images/logo" width="30" height="30" class="d-inline-block align-top"> Pong Smart
@@ -78,13 +79,14 @@
                 </div>
             </nav>
             <main role="main" class="col-md-9 ml-sm-auto col-lg-10 flex-wrap" style="background-color: #232931;">
+                <!-- temperature -->
                 <div class="row">
                     <div class="col-lg-4 col-md-6">
                         <div class="card mb-4 rounded-lg shadow" style="background-color: #182952">
                             <div class="card-body flexbox-b">
                                 <div class="easypie mr-4" data-percent="73" data-bar-color="#18C5A9" data-size="80" data-line-width="8">
                                     <span class="easypie-data text-success" style="font-size:32px;"><i class="la la-users"></i></span>
-                                    <canvas height="80" width="80"></canvas></div>
+                                    <canvas id="temperature" height="40" width="80"></canvas></div>
                                 <div>
                                     <h3 class="font-strong text-success">128</h3>
                                     <div class="text-muted">
@@ -94,12 +96,13 @@
                             </div>
                         </div>
                     </div>
+                    <!-- brightness -->
                     <div class="col-lg-4 col-md-6">
                         <div class="card mb-4 shadow rounded-lg" style="background-color: #2b3595;">
                             <div class="card-body flexbox-b">
                                 <div class="easypie mr-4" data-percent="42" data-bar-color="#5c6bc0" data-size="80" data-line-width="8">
                                     <span class="easypie-data font-26 text-primary"><i class="ti-world"></i></span>
-                                    <canvas height="80" width="80"></canvas></div>
+                                    <canvas id="brightness" height="40" width="80"></canvas></div>
                                 <div>
                                     <h3 class="font-strong text-success">6400</h3>
                                     <div class="text-muted">TOTAL ALARM</div>
@@ -107,6 +110,7 @@
                             </div>
                         </div>
                     </div>
+                    <!-- total data -->
                     <div class="col-lg-4 col-md-6">
                         <div class="card mb-4 shadow rounded-lg" style="background-color: #7045af;">
                             <div class="card-body flexbox-b">
@@ -134,7 +138,7 @@
                     <canvas class="my-4 w-100" id="myChart" width="800" height="380"></canvas>
                 </section>
                 <section id="Enviroment">
-                    <canvas class="my-4 w-100" id="myChart" width="800" height="380"></canvas>
+                    <canvas class="my-4 w-100" id="enviroment" width="800" height="380"></canvas>
                 </section>
                 <h2 class="h2 text-white">Section title</h2>
                 <div class="table-responsive" id="title">
@@ -275,7 +279,10 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
     <script src="https://unpkg.com/feather-icons"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script>
-    <script src="js/dashboard.js"></script>
+    <!-- Firebase App (the core Firebase SDK) is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/7.10.0/firebase.js "></script>
+    <script src="js/firebase/firebase.js"></script>
+    <script src="js/dashboard/temperature.js"></script>
 </body>
 
 </html>

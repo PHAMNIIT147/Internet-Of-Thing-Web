@@ -39,25 +39,8 @@
             </ul>
         </div>
         <ul class="nav justify-content-end">
-            <li class="nav-item">
-                <a class="nav-link" href="https://github.com/PHAMNIIT147?tab=repositories">
-                    <img src="fonts/svgs/brands/github.svg" alt="github icon" width="20" height="20">
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="Phong Pham#4062">
-                    <img src="fonts/svgs/brands/discord.svg" alt="discord icons" width="20" height="20">
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="https://t.me/Pham_Phong">
-                    <img src="fonts/svgs/brands/telegram.svg" alt="telegram icons" width="20" height="20">
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="https://www.linkedin.com/in/pham-phong-b12ab1134/">
-                    <img src="fonts/svgs/brands/linkedin.svg" alt="linkedin icon" width="20" height="20">
-                </a>
+            <li class="nav-item shadow-lg">
+                <h5 class="text-white rounded-lg" id="TimeZone"></h5>
             </li>
         </ul>
     </nav>
@@ -67,18 +50,24 @@
                 <div class="card shadow" style="background-color:#24292e;">
                     <div class="card-header">
                         <span data-feather="home" class="text-white"></span>
-                        <h4 class="font-weight-bold text-white"><span class="statusFromDatabase" id="statusColor"> </span></h4>
+                        <h4 class="font-weight-bold text-white"><span class="statusFromDatabase" id="statusColor"> </span>
+                        </h4>
                     </div>
                     <div class="card-body">
                         <div class="carousel-inner">
                             <div class="carousel-item active">
                                 <span id="statusHangarImage"></span>
-                                </span>
+                                <div class="card-title">
+
+                                </div>
+                                <div class="card-title pb-2">
+                                    <h5 class="text-white border rounded-lg" id="TimeStamp"></h5>
+                                </div>
                             </div>
                         </div>
                     </div>
                     <div class="card-footer">
-                        <p class="text-white lead">The operating status of the hangar is none</p>
+                        <p class="text-white" id="inforTemperature">The operating status of the hangar is none</p>
                     </div>
                 </div>
             </div>
@@ -134,7 +123,7 @@
                 </div>
             </div>
             <div class="row text-white align-items-center text-center h-100">
-                <div id="light" class="shadow col-md-4 status-button border rounded-lg justify-content-center mb-2 p-2" style="height:150px; border: none; " type="submit">
+                <div id="light" class="shadow col-md-4 status-button border rounded-lg justify-content-center mb-2" style="height:150px; border: none; " type="submit">
                     <div class="row justify-content-center mb-4">
                         <h5 class="text-white font-weight-bold px-1">Light</h5>
                     </div>
@@ -161,7 +150,7 @@
                         </div>
                     </div>
                 </div>
-                <div id="light" class="shadow col-md-4 status-button border rounded-lg justify-content-center mb-2" style="height:150px; border: none; " type="submit">
+                <div id="light" class="shadow col-md-4 status-button border rounded-lg justify-content-center mb-2 " style="height:150px; border: none; " type="submit">
                     <div class="row justify-content-center mb-4">
                         <h5 class="text-white font-weight-bold px-1">Ventilation</h5>
                     </div>
@@ -292,8 +281,9 @@
         <script src="https://unpkg.com/feather-icons"></script>
         <!-- Firebase App (the core Firebase SDK) is always required and must be listed first -->
         <script src="https://www.gstatic.com/firebasejs/7.10.0/firebase.js "></script>
-        <script src="js/firebase.js"></script>
+        <script src="js/firebase/firebase.js"></script>
         <script src="js/main.js "></script>
+        <script src="js/firebase/firebaseAPI.js"></script>
 </body>
 
 </html>

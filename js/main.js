@@ -19,22 +19,6 @@ const statusAlarmHangar = {
     best: "The temperature inside the hangar is normal"
 };
 
-function displayTextStatus(text) {
-    document.getElementById("inforTemperature").innerText = text;
-}
-
-function changeColorStatus(color) {
-    document.getElementById("statusColor").style.color = color;
-    document.getElementById("displayStatusTemperature").style.color = color;
-}
-
-function displayImageStatus(refImage) {
-    document.getElementById("statusHangarImage").innerHTML = refImage;
-}
-
-
-
-
 $(function() {
     /*
      * query open source feather 
@@ -57,12 +41,16 @@ $(function() {
     const hemuidityElement = document.getElementById('displayStatusHumidity');
     const buttonLight = document.getElementById('light');
 
-    const temperatureReference = database.ref('DHT11').child('Temperature');
+    /* path JSON in database */
+    const sensorReference = database.ref('DHT11');
+
+    const humidityReference = sensorReference.child('Humidity');
+    const temperatureReference = sensorReference.child('Temperature');
 
     const celsiusReference = temperatureReference.child('Celsius');
     const fahremheitReference = temperatureReference.child('Faremheit');
 
-    const humidityReference = database.ref('DHT11').child('Humidity');
+    const timeReference = sensorReference.child('Time');
 
     dataStatus.on("value", function() {
 
@@ -105,6 +93,16 @@ $(function() {
         hemuidityElement.innerText = humiditySnapshot.val();
     });
 
+    timeReference.on("value", function(snapshot) {
+        let eut = parseInt(snapshot.val());
+        console.log(eut);
+        let date = new Date(eut).toLocaleTimeString("en-US")
+        document.getElementById("TimeStamp").innerText = eut;
+        console.log(date);
+    });
+
+    startTime();
+
     var firebaseReference = dataStatus.child("light");
     $(".status-button").click(function() {
         //toggle
@@ -124,3 +122,33 @@ $(function() {
         }
     });
 });
+
+function displayTextStatus(text) {
+    document.getElementById("inforTemperature").innerText = text;
+}
+
+function changeColorStatus(color) {
+    document.getElementById("statusColor").style.color = color;
+    document.getElementById("displayStatusTemperature").style.color = color;
+}
+
+function displayImageStatus(refImage) {
+    document.getElementById("statusHangarImage").innerHTML = refImage;
+}
+
+function startTime() {
+    var today = new Date();
+    var h = today.getHours();
+    var m = today.getMinutes();
+    var s = today.getSeconds();
+    m = checkTime(m);
+    s = checkTime(s);
+    document.getElementById('TimeZone').innerHTML =
+        h + ":" + m + ":" + s;
+    var t = setTimeout(startTime, 500);
+}
+
+function checkTime(i) {
+    if (i < 10) { i = "0" + i }; // add zero in front of numbers < 10
+    return i;
+}

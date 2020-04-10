@@ -1,6 +1,6 @@
 async function chartIt() {
     const data = await getData();
-    var ctx = document.getElementById('myChart').getContext('2d');
+    var ctx = document.getElementById('enviroment').getContext('2d');
 
     var myChart = new Chart(ctx, {
         type: 'line',
