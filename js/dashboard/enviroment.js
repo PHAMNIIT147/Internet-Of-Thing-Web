@@ -1,46 +1,88 @@
-async function chartIt() {
-    const data = await getData();
-    var ctx = document.getElementById('enviroment').getContext('2d');
+const ctx = document.getElementById('temperature').getContext('2d');
+const total = document.getElementById('TotalDatabase');
+
+$(function() {
+
+    let database = firebase.database();
+    const dataJsonReference = database.ref('DHT11').child('data');
+
+    dataJsonReference.on('value', gotData, errData);
+});
+
+function gotData(data) {
+
+    let records = data.val();
+    let keys = Object.keys(records);
+
+    let myDataHum = [];
+    let myDataTemp = [];
+    let myTime = [];
+
+    for (let i = 0; i < keys.length; i++) {
+        let k = keys[i];
+        let humidity = records[k].humidity;
+        let temperature = records[k].temperature.celsius;
+
+        let unixtimestamp = records[k].time;
+        let time = convert(unixtimestamp);
+
+        myDataTemp.push(temperature);
+        myDataHum.push(humidity);
+        myTime.push(time);
+
+        total.innerText = i;
+
+        console.log(temperature, humidity, time);
+    }
 
     var myChart = new Chart(ctx, {
         type: 'line',
         data: {
-            labels: data.xs,
+            labels: myTime,
             datasets: [{
-                label: 'Global Average Temperature from NASA',
-                data: data.ys,
-                backgroundColor: [
-                    'rgba(255, 99, 132, 0.2)',
-
-                ],
-                borderColor: [
-                    'rgba(255, 99, 132, 1)',
-                ],
-                borderWidth: 1,
-                fill: false
-            }]
+                    label: 'H',
+                    data: myDataHum,
+                    backgroundColor: [
+                        'rgba(255, 99, 132, 0.2)',
+                    ],
+                    borderColor: [
+                        'rgba(255, 99, 132, 1)',
+                    ],
+                    borderWidth: 1,
+                    fill: false,
+                },
+                {
+                    label: 'T',
+                    data: myDataTemp,
+                    backgroundColor: [
+                        'rgba(153, 102, 255, 0.2)',
+                    ],
+                    borderColor: [
+                        'rgba(54, 162, 235, 1)',
+                    ],
+                    borderWidth: 1,
+                    fill: false,
+                }
+            ],
         },
         options: {
-            responsive: true,
             scales: {
                 yAxes: [{
-                    display: true,
+                    ticks: {
+                        callback: function(value, index, values) {
+                            return value;
+                        }
+                    },
                     scaleLabel: {
                         display: true,
                         labelString: 'Value'
                     },
-                    ticks: {
-                        // Include a dollar sign in the ticks
-                        callback: function(value, index, values) {
-                            return '$' + value;
-                        }
-                    }
                 }],
                 xAxes: [{
                     display: true,
                     scaleLabel: {
                         display: true,
-                        labelString: 'Year'
+                        labelString: 'Time'
                     }
                 }]
             }
@@ -48,28 +90,30 @@ async function chartIt() {
     });
 }
 
-async function getData() {
-    var xs = [];
-    var ys = [];
-
-    const respone = await fetch('data/ZonAnn.Ts+dSST.csv');
-    const data = await respone.text();
-    console.log(data);
-
-    const table = data.split('\n').slice(1);
-    table.forEach(row => {
-        const column = row.split(',');
-        const year = column[0];
-        xs.push(year);
-        const temp = column[1];
-        ys.push(parseFloat(temp) + 14);
-        console.log(year, temp);
-    });
-    return { xs, ys };
+function errData(err) {
+    console.log('Error data');
+    console.log(err);
 }
 
-$(function() {
-    feather.replace();
+function convert(unixtimestamp) {
+    // Months array
+    let months_arr = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+    // Convert timestamp to milliseconds
+    let date = new Date(unixtimestamp * 1000);
+    // Year
+    let year = date.getFullYear();
+    // Month
+    let month = months_arr[date.getMonth()];
+    // Day
+    let day = date.getDate();
+    // Hours
+    let hours = date.getHours();
+    // Minutes
+    let minutes = "0" + date.getMinutes();
+    // Seconds
+    let seconds = "0" + date.getSeconds();
+    // Display date time in MM-dd-yyyy h:m:s format
+    let convdataTime = hours + ':' + minutes.substr(-2) + ':' + seconds.substr(-2);
 
-    chartIt();
-});
+    return convdataTime;
+}

@@ -57,7 +57,7 @@
     <!-- Dasboard -->
     <div class="container-fluid">
         <div class="row">
-            <nav class="col-md-2 d-none d-md-block sidebar" style="background-color: #232931;">
+            <nav class="col-md-2 d-none d-md-block sidebar" style="background-color:#202040">
                 <div class="sidebar-sticky">
                     <ul class="nav flex-column">
                         <li class="nav-item font-weight-bold mb-2">
@@ -86,11 +86,11 @@
                             <div class="card-body flexbox-b">
                                 <div class="easypie mr-4" data-percent="73" data-bar-color="#18C5A9" data-size="80" data-line-width="8">
                                     <span class="easypie-data text-success" style="font-size:32px;"><i class="la la-users"></i></span>
-                                    <canvas id="temperature" height="40" width="80"></canvas></div>
+                                    <canvas id="dyEnviroment" height="40" width="80"></canvas></div>
                                 <div>
                                     <h3 class="font-strong text-success">128</h3>
                                     <div class="text-muted">
-                                        NEW PLANES
+                                        REAL-TIME
                                     </div>
                                 </div>
                             </div>
@@ -104,8 +104,8 @@
                                     <span class="easypie-data font-26 text-primary"><i class="ti-world"></i></span>
                                     <canvas id="brightness" height="40" width="80"></canvas></div>
                                 <div>
-                                    <h3 class="font-strong text-success">6400</h3>
-                                    <div class="text-muted">TOTAL ALARM</div>
+                                    <h3 class="font-strong text-success" id="TotalDatabase">6400</h3>
+                                    <div class="text-muted">TOTAL DATABASE</div>
                                 </div>
                             </div>
                         </div>
@@ -116,10 +116,10 @@
                             <div class="card-body flexbox-b">
                                 <div class="easypie mr-4" data-percent="70" data-bar-color="#ff4081" data-size="80" data-line-width="8">
                                     <span class="easypie-data text-pink" style="font-size:32px;"><i class="la la-tags"></i></span>
-                                    <canvas height="80" width="80"></canvas></div>
+                                    <canvas height="40" width="80"></canvas></div>
                                 <div>
                                     <h3 class="font-strong text-warning">210</h3>
-                                    <div class="text-muted">TOTAL EMERGENCY</div>
+                                    <div class="text-muted">TOTAL ERROR</div>
                                 </div>
                             </div>
                         </div>
@@ -135,10 +135,7 @@
                 </div>
                 <!-- chart screen -->
                 <section id="Dynamic">
-                    <canvas class="my-4 w-100" id="myChart" width="800" height="380"></canvas>
-                </section>
-                <section id="Enviroment">
-                    <canvas class="my-4 w-100" id="enviroment" width="800" height="380"></canvas>
+                    <canvas class="my-4 w-100" id="temperature" width="800" height="480"></canvas>
                 </section>
                 <h2 class="h2 text-white">Section title</h2>
                 <div class="table-responsive" id="title">
@@ -282,7 +279,8 @@
     <!-- Firebase App (the core Firebase SDK) is always required and must be listed first -->
     <script src="https://www.gstatic.com/firebasejs/7.10.0/firebase.js "></script>
     <script src="js/firebase/firebase.js"></script>
-    <script src="js/dashboard/temperature.js"></script>
+    <script src="js/dashboard/enviroment.js"></script>
+
 </body>
 
 </html>
