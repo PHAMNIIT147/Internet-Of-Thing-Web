@@ -58,17 +58,18 @@ $(function() {
         var refColor;
         var refText;
 
-        if (temperature > 50) {
+        if (temperature > 35) {
             // changes clas of CSS
             $(".statusFromDatabase").text("Worst");
             $(".lead").text("EMERGENCY");
+            ``
 
             refText = statusAlarmHangar.worst;
             refColor = "#ff0000";
             refImage = imageStatusHangar.fire;
 
             console.log("status worst");
-        } else if (temperature < 50) {
+        } else if (temperature <= 35) {
             $(".statusFromDatabase").text("Best");
 
             refColor = "#ffffff";
@@ -130,6 +131,8 @@ function displayTextStatus(text) {
 function changeColorStatus(color) {
     document.getElementById("statusColor").style.color = color;
     document.getElementById("displayStatusTemperature").style.color = color;
+    document.getElementById("ColorTemperature").style.color = color;
+    document.getElementById("ColorHangar").style.color = color;
 }
 
 function displayImageStatus(refImage) {
