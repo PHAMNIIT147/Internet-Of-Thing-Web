@@ -10,8 +10,8 @@
 configuration object inside Hangar
 ********************************** */
 const imageStatusHangar = {
-    fire: "<img src='fonts/icons/hangar-fire-icon.png' width='250' height='auto'>",
-    normal: "<img src='fonts/icons/hangar-stable-icon.png' width='150' height='auto'>"
+    fire: "<img src='../fonts/icons/hangar-fire-icon.png' width='250' height='auto'>",
+    normal: "<img src='../fonts/icons/hangar-stable-icon.png' width='150' height='auto'>"
 };
 
 const statusAlarmHangar = {
@@ -20,10 +20,6 @@ const statusAlarmHangar = {
 };
 
 $(function() {
-    /*
-     * query open source feather 
-     */
-    feather.replace();
     /**********************************************
  			PROGRANMMING CONFIGURATION
     ************************************************/
@@ -132,7 +128,6 @@ function changeColorStatus(color) {
     document.getElementById("statusColor").style.color = color;
     document.getElementById("displayStatusTemperature").style.color = color;
     document.getElementById("ColorTemperature").style.color = color;
-    document.getElementById("ColorHangar").style.color = color;
 }
 
 function displayImageStatus(refImage) {
