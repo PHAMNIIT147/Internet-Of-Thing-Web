@@ -10,14 +10,10 @@
 configuration object inside Hangar
 ********************************** */
 const imageStatusHangar = {
-    fire: "<img src='../fonts/icons/hangar-fire-icon.png' width='250' height='auto'>",
+    fire: "<img src='../fonts/icons/hangar-fire-icon.png' width='150' height='auto'>",
     normal: "<img src='../fonts/icons/hangar-stable-icon.png' width='150' height='auto'>"
 };
 
-const statusAlarmHangar = {
-    worst: "The temperature inside the hangar is an worst",
-    best: "The temperature inside the hangar is normal"
-};
 
 $(function() {
     /**********************************************
@@ -33,8 +29,8 @@ $(function() {
     //create image hangar
 
 
-    const temperatureElement = document.getElementById('displayStatusTemperature');
-    const hemuidityElement = document.getElementById('displayStatusHumidity');
+    const temperatureElement = document.getElementById('Temperature');
+    const hemuidityElement = document.getElementById('Humidity');
     const buttonLight = document.getElementById('light');
 
     /* path JSON in database */
@@ -56,20 +52,18 @@ $(function() {
 
         if (temperature > 35) {
             // changes clas of CSS
-            $(".statusFromDatabase").text("Worst");
+            $(".Status").text("Worst");
             $(".lead").text("EMERGENCY");
             ``
 
-            refText = statusAlarmHangar.worst;
             refColor = "#ff0000";
             refImage = imageStatusHangar.fire;
 
             console.log("status worst");
         } else if (temperature <= 35) {
-            $(".statusFromDatabase").text("Best");
+            $(".Status").text("Best");
 
             refColor = "#ffffff";
-            refText = statusAlarmHangar.best;
             refImage = imageStatusHangar.normal;
 
             console.log("status best");
@@ -131,7 +125,7 @@ function changeColorStatus(color) {
 }
 
 function displayImageStatus(refImage) {
-    document.getElementById("statusHangarImage").innerHTML = refImage;
+    document.getElementById("HangarImage").innerHTML = refImage;
 }
 
 function startTime() {
