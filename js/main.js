@@ -39,9 +39,6 @@ $(function() {
     const humidityReference = sensorReference.child('Humidity');
     const temperatureReference = sensorReference.child('Temperature');
 
-    const celsiusReference = temperatureReference.child('Celsius');
-    const fahremheitReference = temperatureReference.child('Faremheit');
-
     const timeReference = sensorReference.child('Time');
 
     dataStatus.on("value", function() {
@@ -75,7 +72,7 @@ $(function() {
     });
 
     /* test online */
-    celsiusReference.on("value", function(temperatureSnapshot) {
+    temperatureReference.on("value", function(temperatureSnapshot) {
         temperature = temperatureSnapshot.val();
         temperatureElement.innerText = parseInt(temperature);
     });
@@ -84,13 +81,6 @@ $(function() {
         hemuidityElement.innerText = humiditySnapshot.val();
     });
 
-    timeReference.on("value", function(snapshot) {
-        let eut = parseInt(snapshot.val());
-        console.log(eut);
-        let date = new Date(eut).toLocaleTimeString("en-US")
-        document.getElementById("TimeStamp").innerText = eut;
-        console.log(date);
-    });
 
     startTime();
 
