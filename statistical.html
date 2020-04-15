@@ -39,7 +39,7 @@
                             <span class="easypie-data text-success" style="font-size:32px;"><i class="la la-users"></i></span>
                             <canvas id="RealTime" height="50" width="60"></canvas></div>
                         <div>
-                            <h3 class="font-strong text-success">128</h3>
+                            <h3 class="font-strong text-success"><span id="Pings">0</span><small class="text-muted">ms</small></h3>
                             <div class="text-muted">
                                 REAL-TIME
                             </div>
@@ -55,7 +55,9 @@
                             <span class="easypie-data font-26 text-primary"><i class="ti-world"></i></span>
                             <canvas id="Average" height="50" width="60"></canvas></div>
                         <div>
-                            <h3 class="font-strong text-success" id="TotalDatabase">6400</h3>
+                            <h3 class="font-strong text-success">
+                                <span id="TotalDatabase"></span>
+                                <small class="text-muted">length</small></h3>
                             <div class="text-muted">AVERAGE ENVIROMENT</div>
                         </div>
                     </div>
@@ -69,7 +71,7 @@
                             <span class="easypie-data text-pink" style="font-size:32px;"><i class="la la-tags"></i></span>
                             <canvas height="40" width="80"></canvas></div>
                         <div>
-                            <h3 class="font-strong text-warning">210</h3>
+                            <h3 class="font-strong text-warning">0</h3>
                             <div class="text-muted">TOTAL ERROR</div>
                         </div>
                     </div>
@@ -236,8 +238,8 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script>
     <!-- Firebase App (the core Firebase SDK) is always required and must be listed first -->
     <script src="https://www.gstatic.com/firebasejs/7.10.0/firebase.js "></script>
-    <script src="../js/firebase/firebase.js"></script>
-    <script src="../js/dashboard/statistics.js"></script>
+    <script src="js/firebase/firebase.js"></script>
+    <script src="js/dashboard/statistics.js"></script>
 
 </body>
 
