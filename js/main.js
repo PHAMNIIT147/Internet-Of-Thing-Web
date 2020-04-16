@@ -10,8 +10,8 @@
 configuration object inside Hangar
 ********************************** */
 const imageStatusHangar = {
-    fire: "<img src='../fonts/icons/hangar-fire-icon.png' width='150' height='auto'>",
-    normal: "<img src='../fonts/icons/hangar-stable-icon.png' width='150' height='auto'>"
+    fire: "<img src='assets/images/hangar/hangar-fire-icon.png' width='150' height='auto'>",
+    normal: "<img src='assets/images/hangar/hangar-stable-icon.png' width='150' height='auto'>"
 };
 
 
