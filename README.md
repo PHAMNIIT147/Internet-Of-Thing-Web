@@ -1,6 +1,6 @@
 <p align="center">
   <a href="https://getbootstrap.com/">
-    <img src="images/gif/logo.gif" alt="Bootstrap logo" width="100">
+    <img src="assets/images/logo/logo.png" alt="Bootstrap logo" width="100">
   </a>
 </p>
 <h1 align="center" style="color: black;" >PongSmart IoT!</h1>
