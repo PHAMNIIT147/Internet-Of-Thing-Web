@@ -10,32 +10,30 @@ $(function() {
 
     const dataAverage = ref.child('data');
     dataAverage.on('value', gotDataAverage, errData);
-
 });
 
 function gotData(data) {
     const ctx = document.getElementById('temperature').getContext('2d');
-
+    let Time = startTime();
     let records = data.val();
     let keys = Object.keys(records);
 
     let myDataHum = [];
     let myDataTemp = [];
+    let myHeat = [];
     let myTime = [];
 
     for (let i = 0; i < keys.length; i++) {
         let k = keys[i];
         let humidity = records[k].humidity;
-        let temperature = records[k].temperature.celsius;
-
-        let unixtimestamp = records[k].time;
-        let time = convert(unixtimestamp);
+        let temperature = records[k].temperature;
+        let heat = records[k].heat;
 
         myDataTemp.push(parseInt(temperature));
         myDataHum.push(parseInt(humidity));
-        myTime.push(time);
-
-        console.log(temperature, humidity, time);
+        myHeat.push(parseInt(heat));
+        myTime.push(i);
+        console.log(temperature, humidity, heat);
     }
 
     var myChart = new Chart(ctx, {
@@ -43,7 +41,7 @@ function gotData(data) {
         data: {
             labels: myTime,
             datasets: [{
-                    label: 'H',
+                    label: 'Humidity',
                     data: myDataHum,
                     backgroundColor: [
                         'rgba(255, 99, 132, 0.2)',
@@ -55,13 +53,25 @@ function gotData(data) {
                     fill: false,
                 },
                 {
-                    label: 'T',
+                    label: 'Temperature',
                     data: myDataTemp,
                     backgroundColor: [
                         'rgba(153, 102, 255, 0.2)',
                     ],
                     borderColor: [
                         'rgba(54, 162, 235, 1)',
+                    ],
+                    borderWidth: 1,
+                    fill: false,
+                },
+                {
+                    label: 'Heat',
+                    data: myHeat,
+                    backgroundColor: [
+                        'rgba(75, 192, 192, 0.2)',
+                    ],
+                    borderColor: [
+                        'rgba(75, 192, 192, 1)',
                     ],
                     borderWidth: 1,
                     fill: false,
@@ -72,6 +82,7 @@ function gotData(data) {
             scales: {
                 yAxes: [{
                     ticks: {
+                        fontSize: 12,
                         callback: function(value, index, values) {
                             return value;
                         }
@@ -85,7 +96,12 @@ function gotData(data) {
                     display: true,
                     scaleLabel: {
                         display: true,
-                        labelString: 'Time'
+                        labelString: 'Time ' + Time.hour + ':' + Time.minutes + ':' + Time.seconds
+
+                    },
+                    ticks: {
+                        fontSize: 20,
+                        display: false
                     }
                 }]
             }
@@ -100,7 +116,7 @@ function gotDataRT(data) {
     console.log('Object: ' + key);
 
     let dataHum = records.Humidity;
-    let dataTem = records.Temperature.Celsius;
+    let dataTem = records.Temperature;
     console.log('Humidity: ' + dataHum, 'Temperature: ' + dataTem);
 
     const ctx = document.getElementById('RealTime').getContext('2d');
@@ -160,7 +176,7 @@ function gotDataAverage(data) {
         let _humidity = records[k].humidity;
         sumHum += _humidity;
 
-        let _temperature = records[k].temperature.celsius;
+        let _temperature = records[k].temperature;
         sumTem += _temperature;
     }
 
@@ -220,4 +236,22 @@ function convert(unixtimestamp) {
     let convdataTime = hours + ':' + minutes.substr(-2) + ':' + seconds.substr(-2);
 
     return convdataTime;
+}
+
+function startTime() {
+    var today = new Date();
+    var hour = today.getHours();
+    var minutes = today.getMinutes();
+    var seconds = today.getSeconds();
+    minutes = checkTime(minutes);
+    seconds = checkTime(seconds);
+    /*     document.getElementById('TimeZone').innerHTML =
+            h + ":" + m + ":" + s; */
+    console.log(hour + " : " + minutes + " : " + seconds);
+    return { hour, minutes, seconds };
+}
+
+function checkTime(i) {
+    if (i < 10) { i = "0" + i }; // add zero in front of numbers < 10
+    return i;
 }
