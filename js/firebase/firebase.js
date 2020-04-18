@@ -9,15 +9,14 @@
 /* create firebase global */
 var appFirebase = {};
 $(function() {
-    const firebaseConfig = {
-        apiKey: "AIzaSyAZbCWXwgO5d2RfTVox5zFtdHbueqH7cJs",
-        authDomain: "zipi-iot.firebaseapp.com",
-        databaseURL: "https://zipi-iot.firebaseio.com",
-        projectId: "zipi-iot",
-        storageBucket: "zipi-iot.appspot.com",
-        messagingSenderId: "169193769529",
-        appId: "1:169193769529:web:7f50216274175c2a1f9be8",
-        measurementId: "G-EBS5WW78GZ"
+    var firebaseConfig = {
+        apiKey: "AIzaSyDgkKeQntDxsqwdgf1tfp9E9cOWQWT08RQ",
+        authDomain: "zipi-iot-aa1c7.firebaseapp.com",
+        databaseURL: "https://zipi-iot-aa1c7.firebaseio.com",
+        projectId: "zipi-iot-aa1c7",
+        storageBucket: "zipi-iot-aa1c7.appspot.com",
+        messagingSenderId: "1079705391061",
+        appId: "1:1079705391061:web:b2d4c51c4b835fd415375c"
     };
 
     // Initialize Firebase

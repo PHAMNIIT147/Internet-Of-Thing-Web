@@ -109,7 +109,6 @@ function displayTextStatus(text) {
 }
 
 function changeColorStatus(color) {
-    document.getElementById("statusColor").style.color = color;
     document.getElementById("displayStatusTemperature").style.color = color;
     document.getElementById("ColorTemperature").style.color = color;
 }
