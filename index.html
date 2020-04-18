@@ -1,51 +1,102 @@
 <!--
  * @ Author: Pham Thanh Phong
- * @ Create Time: 2020-03-15 12:16:32
+ * @ Create Time: 2020-03-06 22:09:48
  * @ Modified by: Your name
- * @ Modified time: 2020-03-15 12:26:06
+ * @ Modified time: 2020-03-15 12:31:12
  * @ Description:
  -->
 <!DOCTYPE html>
 <html lang="en">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.css" />
-<link type="text/css" rel="stylesheet" href="css/bootstrap.css">
-<link rel="stylesheet" href="css/style.css">
-<link rel="icon" href="assets/logo/logo.png">
-<title>Login - PongSmart</title>
+
+<head>
+    <title>Home #StayAtHome</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="assets/logo/logo.png">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link href="https://use.fontawesome.com/releases/v5.12.1/css/all.css" rel="stylesheet">
+    <link href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css" rel="stylesheet">
 </head>
 
-<body>
-    <div class="bg-image" style="background-color: #202040;">
-        <div class="d-flex justify-content-center">
-            <div class="col-sm-9 col-md-7 col-lg-3 mx-auto">
-                <div class=" shadow my-5 rounded-lg" style="background-color: #222831">
-                    <div class="card-body">
-                        <div class="text-center p-md-0 pb-1 text-success">
-                            <img class="text-center" src="assets/logo/logo.png" alt="logo" width="80" height="auto">
-                        </div>
-                        <h1 class="card-title font-weight-bold text-center text-white pb-2 px-2" style="font-size: 20px;">Sign In to ZiPi</h1>
-                        <div id="firebaseui-auth-container"></div>
-                        <div id="loader">Loading...</div>
-                    </div>
+<body style="background-color: #24292e;">
+    <!-- navbar -->
+    <nav class="site-header sticky-top py-1 bg-dark">
+        <div class="container d-flex flex-column flex-md-row justify-content-between">
+            <a href="" class="py-2 d-md-block d-none text-white font-weight-bold"><span><img src="assets/logo/logo.png" width="30" height="30" alt=""></span> ZiPi</a>
+            <a class="py-2 d-none d-md-inline-block text-white font-weight-bold" href="index.html">Home</a>
+            <a class="py-2 d-md-inline-block text-success" href="ncovid19_global.html">
+                nCovid19
+                <img src="assets/designs/global.svg" alt="Global" width="30">
+            </a>
+            <a class="py-2 d-md-inline-block text-danger border-danger" href="ncovid19_who.html">
+                nCovid19
+                <img src="assets/designs/who.svg" alt="WHO" width="30">
+            </a>
+            <a class="py-2 d-none d-md-inline-block text-white" href="login.html">Products
+                <img src="assets/navbar/products.svg" alt="" height="30">
+            </a>
+            <a class="py-2 d-none d-md-inline-block text-white" href="#">About</a>
+            <a class="py-2 d-none d-md-inline-block text-white" href="#">Support</a>
+        </div>
+    </nav>
+
+    <div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
+        <h1 class="display-4 text-white font-weight-bold">Welcome to ZiPi</h1>
+        <p class="lead text-muted font-italic">"Providing internet of things application solution"</p>
+    </div>
+
+    <div class="container">
+        <div class="card-deck mb-3 text-center">
+            <div class="card mb-4 shadow-sm">
+                <div class="card-header">
+                    <h4 class="my-0 font-weight-normal">IoT News</h4>
                 </div>
-                <p style="text-align: center;">
-                    <span class="text-white" style="font-size: 14px;">
-                        Deisgned by
-                        <a class="text-white" href=" ">Phong. Thanh Pham</a> |
-                        <a href="phongpham663@gmail.com">Email</a>|
-                        <a class="text-white" href="https://vaa.edu.vn/ ">About</a>
-                        </span>
-                </p>
+                <div class="card-body">
+                    <figure class="figure">
+                        <img src="assets/images/home/iot_news.jpg" class="figure-img img-fluid rounded" alt="images Iots News">
+                        <figcaption class="figure-caption text-right"> News portal IoTs Of Domestic and World</figcaption>
+                    </figure>
+                    <button type="button" class="btn btn-lg btn-block btn-outline-success">Sign up for free</button>
+                </div>
+            </div>
+            <div class="card mb-4 shadow-sm">
+                <div class="card-header">
+                    <h4 class="my-0 font-weight-normal">IoT Solutions</h4>
+                </div>
+                <div class="card-body">
+                    <figure class="figure">
+                        <img src="assets/images/home/solutions_iot.png" class="figure-img img-fluid rounded" alt="images solutions IoTs.">
+                        <figcaption class="figure-caption text-right"> Providing solutions for Smart Building, Smart City, Smart Home, etc.</figcaption>
+                    </figure>
+                    <button type="button" class="btn btn-lg btn-block btn-success">Get started</button>
+                </div>
+            </div>
+            <div class="card mb-4 shadow-sm">
+                <div class="card-header">
+                    <h4 class="my-0 font-weight-normal">IoT Blogs</h4>
+                </div>
+                <div class="card-body">
+                    <figure class="figure">
+                        <img src="assets/images/home/blog_iot.png" class="figure-img img-fluid rounded" alt="images solutions IoTs.">
+                        <figcaption class="figure-caption text-right"> Share with you my information, let's combine find a solution</figcaption>
+                    </figure>
+                    <button type="button" class="btn btn-lg btn-block btn-success">Contact me</button>
+                </div>
             </div>
         </div>
-    </div>
-    <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.4.1.min.js "></script>
-    <script src="https://www.gstatic.com/firebasejs/7.10.0/firebase.js "></script>
-    <script src="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.js"></script>
-    <script src="https://unpkg.com/feather-icons"></script>
-    <script src="js/firebase/firebase.js"></script>
-    <script src="js/firebase/firebaseUI.js"></script>
+
+        <footer class="p-4">
+            <div class="row justify-content-center">>
+                <small class="d-block text-muted">&copy; Designed by Phong. Pham Thanh @2020 | <a href="mailto:phongpham663@gmail.com">Email</a> | <a href="">Twiiter</a> | <a href="">Github</a></small>
+            </div>
+        </footer>
+        <script src="https://unpkg.com/jquery@3.4.1/dist/jquery.min.js"></script>
+        <script src="https://unpkg.com/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+        <script src="https://unpkg.com/bootstrap@4.4.1/dist/js/bootstrap.min.js"></script>
+        <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+        <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
+        <script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js"></script>
+        <script src="js/api/ncovid_another.js"></script>
 </body>
 
 </html>
