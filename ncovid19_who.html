@@ -10,7 +10,7 @@
     <link href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css" rel="stylesheet">
     <link rel="stylesheet" href="">
     <link rel="icon" href="assets/logo/logo.png">
-    <title>nCovid-19</title>
+    <title>nCovid-19-WHO</title>
 </head>
 
 <body style="background-color: #232931;">
@@ -18,21 +18,28 @@
     <nav class="site-header sticky-top py-1 bg-dark">
         <div class="container d-flex flex-column flex-md-row justify-content-between">
             <a href="" class="py-2 d-md-block d-none text-white font-weight-bold"><span><img src="assets/logo/logo.png" width="30" height="30" alt=""></span> ZiPi</a>
-            <a class="py-2  d-md-inline-block text-white" href="main.html">Home</a>
+            <a class="py-2  d-md-inline-block text-white" href="index.html">Home
+                <img src="assets/navbar/home.svg" alt="" width="30">
+            </a>
             <a class="py-2  d-md-inline-block text-success" href="ncovid19_global.html">
                 nCovid19
                 <img src="assets/designs/global.svg" alt="Global" width="30">
             </a>
             <a class="py-2 d-md-inline-block d-none text-danger border-danger font-weight-bold" href="ncovid19_who.html">
                 nCovid19
-                <img src="assets/designs/who.svg" alt="WHO" width="30">
             </a>
-            <a class="py-2 d-none d-md-inline-block text-white" href="#">Products</a>
+            <a class="py-2 d-none d-md-inline-block text-white" href="products.html">Products <img src="assets/navbar/products.svg" alt="" height="30"></a>
             <a class="py-2 d-none d-md-inline-block text-white" href="#">About</a>
-            <a class="py-2 d-none d-md-inline-block text-white" href="#">Support</a>
-            <a class="py-2 d-none d-md-inline-block btn btn-outline-success" href="index.html">Log out</a>
+            <a class="py-2 d-none d-md-inline-block text-white" href="login.html">Support </a>
         </div>
     </nav>
+    <!-- title -->
+    <div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
+        <h2 class="display-4 text-white font-weight-bolder">
+            <img src="assets/designs/protected.svg" alt="protected global" width="100"> #Stayathone
+            <img src="assets/designs/protected.svg" alt="protected global" width="100"></h2>
+        <h3 class="text-warning font-italic">"We stay at work for you, You stay at home for us"</h3>
+    </div>
     <!-- table -->
     <div class="container mt-2">
         <div id=toolbar>
@@ -44,18 +51,13 @@
             <table id="table" class="table-dark" data-toolbar="#toolbar" data-sort-name="totalcase" data-sort-order="desc" data-show-footer="true" data-pagination="false" data-search="true" data-page-list="[10 ,20, 50,50,all]" data-show-toggle="true" data-show-columns="true"
                 data-show-columns-show-toggle-all="true" data-show-export="true" data-show-pagination-switch="true"> </table>
         </div>
-        <div class="p-3">
-            <p style="text-align: center;">
-                <span class="text-white" style="font-size: 14px;">
-                    Designed by
-                    <a class="text-white font-italic" href=" ">Phong. Thanh Pham</a> |
-                    <a href="phongpham663@gmail.com" class="text-white">Email</a> |
-                    <a class="text-white" href="https://vaa.edu.vn/ ">About</a>
-                    </span>
-            </p>
-        </div>
     </div>
-
+    <!-- footer -->
+    <footer class="p-4">
+        <div class="row justify-content-center">>
+            <small class="d-block text-muted">&copy; Designed by Phong. Pham Thanh @2020 | <a href="mailto:phongpham663@gmail.com">Email</a> | <a href="">Twiiter</a> | <a href="">Github</a></small>
+        </div>
+    </footer>
     <script src="https://unpkg.com/jquery@3.4.1/dist/jquery.min.js"></script>
     <script src="https://unpkg.com/popper.js@1.16.0/dist/umd/popper.min.js"></script>
     <script src="https://unpkg.com/bootstrap@4.4.1/dist/js/bootstrap.min.js"></script>
