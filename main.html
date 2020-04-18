@@ -18,18 +18,26 @@
 </head>
 
 <body style="background-color: #24292e;">
+    <!-- navbar -->
     <nav class="site-header sticky-top py-1 bg-dark">
         <div class="container d-flex flex-column flex-md-row justify-content-between">
-            <a href="main.html" class="py-2 text-white font-weight-bold"><span><img src="assets/logo/logo.png" width="30" height="30" alt=""></span> ZiPi</a>
-            <a class="py-2 d-none d-md-inline-block font-weight-bold text-success" href="main.html">Home</a>
-            <a class="py-2 d-none d-md-inline-block text-white" href="statistical.html">Statistical</a>
-            <a class="py-2 d-md-inline-block text-white" href="ncovid19.html">nCovid19</a>
+            <a href="" class="py-2 d-md-block d-none text-white font-weight-bold"><span><img src="assets/logo/logo.png" width="30" height="30" alt=""></span> ZiPi</a>
+            <a class="py-2 d-none d-md-inline-block text-white font-weight-bold" href="main.html">Home</a>
+            <a class="py-2 d-none d-md-inline-block text-success" href="ncovid19_global.html">
+                nCovid19
+                <img src="assets/designs/global.svg" alt="Global" width="30">
+            </a>
+            <a class="py-2 d-md-inline-block text-danger border-danger" href="ncovid19_who.html.html">
+                nCovid19
+                <img src="assets/designs/who.svg" alt="WHO" width="30">
+            </a>
             <a class="py-2 d-none d-md-inline-block text-white" href="#">Products</a>
             <a class="py-2 d-none d-md-inline-block text-white" href="#">About</a>
             <a class="py-2 d-none d-md-inline-block text-white" href="#">Support</a>
             <a class="py-2 d-none d-md-inline-block btn btn-outline-success" href="index.html">Log out</a>
         </div>
     </nav>
+    <!-- title -->
     <div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
         <h1 class="display-4 text-white">Hangar</h1>
         <p class="lead">Raeding status from devices is failure</p>
@@ -83,6 +91,66 @@
                 </div>
             </div>
         </div>
+        <div class="row">
+            <div class="col-lg-4 col-md-6">
+                <div class="card mb-4 rounded-lg shadow" style="background-color: #182952">
+                    <div class="card-body flexbox-b">
+                        <div class="easypie mr-4" data-percent="73" data-bar-color="#18C5A9" data-size="80" data-line-width="8">
+                            <span class="easypie-data text-success" style="font-size:32px;"><i class="la la-users"></i></span>
+                            <canvas id="RealTime" height="50" width="60"></canvas></div>
+                        <div>
+                            <h3 class="font-strong text-success"><span id="Pings">0</span><small class="text-muted">ms</small></h3>
+                            <div class="text-muted">
+                                REAL-TIME
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- brightness -->
+            <div class="col-lg-4 col-md-6">
+                <div class="card mb-4 shadow rounded-lg" style="background-color: #2b3595;">
+                    <div class="card-body flexbox-b">
+                        <div class="easypie mr-4" data-percent="42" data-bar-color="#5c6bc0" data-size="80" data-line-width="8">
+                            <span class="easypie-data font-26 text-primary"><i class="ti-world"></i></span>
+                            <canvas id="Average" height="50" width="60"></canvas></div>
+                        <div>
+                            <h3 class="font-strong text-success">
+                                <span id="TotalDatabase"></span>
+                                <small class="text-muted">length</small></h3>
+                            <div class="text-muted">AVERAGE ENVIROMENT</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- total data -->
+            <div class="col-lg-4 col-md-6">
+                <div class="card mb-4 shadow rounded-lg" style="background-color: #7045af;">
+                    <div class="card-body flexbox-b">
+                        <div class="easypie mr-4" data-percent="70" data-bar-color="#ff4081" data-size="80" data-line-width="8">
+                            <span class="easypie-data text-pink" style="font-size:32px;"><i class="la la-tags"></i></span>
+                            <canvas height="40" width="80"></canvas></div>
+                        <div>
+                            <h3 class="font-strong text-warning">0</h3>
+                            <div class="text-muted">TOTAL ERROR</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- chart screen -->
+        <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+            <h1 class="h2 text-white">Enviroment</h1>
+            <div class="btn-toolbar mb-2 mb-md-0">
+                <div class="btn-group mr-2">
+                    <button class="btn btn-sm btn-outline-secondary" type="button">Export</button>
+                </div>
+            </div>
+        </div>
+        <section id="Dynamic">
+            <canvas class="my-4 w-100" id="temperature" width="800" height="480"></canvas>
+        </section>
+
         <!-- CONTROL DEVICE -->
         <div class="site-section" style="background-color: #24292e;">
             <div class="container ">
