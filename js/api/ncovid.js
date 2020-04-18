@@ -6,6 +6,7 @@ axios.get('https://api.covid19api.com/summary').then(function(response) {
 })
 
 function myData(data) {
+    let sum = 0;
     var list = [];
     data.forEach(function(item) {
         list.push({
@@ -18,13 +19,16 @@ function myData(data) {
             totalrecoveries: item.TotalRecovered,
             lastupdate: new Date(item.Date).getDate() + '/' + (new Date(item.Date).getMonth() + 1) + '/' + new Date(item.Date).getFullYear() //.toLocaleString()
         });
+        sum += item.TotalDeaths;
+        console.log(sum);
     });
     return list;
 }
 
 function myTable(arr) {
     var myTable = $('#table').bootstrapTable({
-        height: 600,
+        height: 800,
+        width: 600,
         locale: 'vi_VN',
         columns: [
             [
