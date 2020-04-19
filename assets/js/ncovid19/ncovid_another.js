@@ -18,16 +18,6 @@ axios.get('https://api.thevirustracker.com/free-api?countryTotals=ALL').then(fun
     console.log(error);
 })
 
-axios.interceptors.response.use(function(response) {
-    response.config.metadata.endTime = new Date()
-    response.duration = response.config.metadata.endTime - response.config.metadata.startTime
-    console.log(response);
-}, function(error) {
-    error.config.metadata.endTime = new Date();
-    error.duration = error.config.metadata.endTime - error.config.metadata.startTime;
-    return Promise.reject(error);
-});
-
 function arrData(objData) {
     let arrayData = Object.keys(objData).map(function(key) {
         return objData[key]
@@ -105,6 +95,7 @@ function myTable(dataSet) {
 
 /* solution patern */
 function writeNewPost(_title, _code, _source, _case, _new_case, _deaths, _new_deaths, _activated, _serious, _recovered) {
+    let _time = new Date().toLocaleTimeString();
     if (_title == undefined) {
         _title = "undefined";
         _code = "undefined";
@@ -133,6 +124,7 @@ function writeNewPost(_title, _code, _source, _case, _new_case, _deaths, _new_de
         serious: _serious,
         recovered: _recovered,
         url: _source,
+        time: _time,
     };
 
     console.log("Helllo Post");
