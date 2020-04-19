@@ -1,4 +1,10 @@
+<<<<<<< HEAD
 The MIT License (MIT)
+=======
+MIT License
+
+Copyright (c) 2020 Phong. Pham Thanh
+>>>>>>> 10dc30ce6096ecdfaccfd7413642fbabf90ce598
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -17,6 +23,7 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
+<<<<<<< HEAD
 
 
 
@@ -27,3 +34,5 @@ The MIT License (MIT)
 
 Copyright (c) 2020 Michael Rose
 © 2020 GitHub, Inc.
+=======
+>>>>>>> 10dc30ce6096ecdfaccfd7413642fbabf90ce598
