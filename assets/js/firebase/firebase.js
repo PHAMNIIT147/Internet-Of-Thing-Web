@@ -24,8 +24,5 @@ $(function() {
 
     appFirebase = firebase;
 
-    /*
-     * query open source feather 
-     */
-    feather.replace();
+    /*  */
 });
