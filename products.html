@@ -6,8 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Products</title>
     <link rel="icon" href="static/images/logo/logo.png">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <link href="https://use.fontawesome.com/releases/v5.12.1/css/all.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" icrossorigin="anonymous">
     <link href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css" rel="stylesheet">
 </head>
 
@@ -16,296 +15,118 @@
     <nav class="site-header sticky-top py-1 bg-dark" id="navbar"></nav>
     <!-- title -->
     <div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
-        <h1 class="display-4 text-white">Hangar</h1>
-        <p class="lead">Raeding status from devices is failure</p>
+        <h1 class="display-4 text-white font-weight-bold">Hangar</h1>
     </div>
-
-    <div class="container">
-        <div class="card-deck mb-3 text-center">
-            <div class="card mb-4 shadow-sm bg-dark">
-                <div class="card-header">
-                    <h4 class="my-0 font-weight-normal text-white">Status</h4>
+    <!-- hangar real-time -->
+    <section class="p-2">
+        <div class="container">
+            <div class="card-deck mb-3 text-center">
+                <div class="card mb-4 shadow-sm bg-dark">
+                    <div class="card-header">
+                        <h4 class="my-0 font-weight-normal text-white">Status</h4>
+                    </div>
+                    <div class="card-body">
+                        <h1 class="card-title" id="status"></h1>
+                    </div>
                 </div>
-                <div class="card-body">
-                    <h1 class="card-title" id="HangarImage"></h1>
-                    <button type="button" class="btn btn-lg btn-block btn-orange"> <span class="Status">Error!</span> </button>
-                </div>
-            </div>
-            <div class="card mb-4 shadow-sm bg-dark">
-                <div class="card-header">
-                    <h4 class="my-0 font-weight-normal text-white">Temperature</h4>
-                </div>
-                <div class="card-body">
-                    <h1 class="card-title ">
-                        <span id="Temperature">0</span>
-                        <small class="text-muted">C</small>
-                    </h1>
-                    <h1 class="card-title ">
-                        <span id="Fahremheit">0</span>
-                        <small class="text-muted">F</small>
-                    </h1>
-                    <a href="statistical.html">
-                        <button type="button" class="btn btn-lg btn-block btn-success">Chart started</button>
-                    </a>
-                </div>
-            </div>
-            <div class="card mb-4 shadow-sm bg-dark">
-                <div class="card-header">
-                    <h4 class="my-0 font-weight-normal text-white">Humidity</h4>
-                </div>
-                <div class="card-body">
-                    <h1 class="card-title">
-                        <span id="Humidity" class="text-white">0</span>
-                        <small class="text-muted"> %</small>
-                    </h1>
-                    <h1 class="card-title">
-                        <span class="text-white">0</span>
-                        <small class="text-muted"> %</small>
-                    </h1>
-                    <a href="statistical.html">
-                        <button type="button" class="btn btn-lg btn-block btn-success">Chart started</button>
-                    </a>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-lg-4 col-md-6">
-                <div class="card mb-4 rounded-lg shadow" style="background-color: #182952">
-                    <div class="card-body flexbox-b">
-                        <div class="easypie mr-4" data-percent="73" data-bar-color="#18C5A9" data-size="80" data-line-width="8">
-                            <span class="easypie-data text-success" style="font-size:32px;"><i class="la la-users"></i></span>
-                            <canvas id="RealTime" height="50" width="60"></canvas></div>
-                        <div>
-                            <h3 class="font-strong text-success"><span id="Pings">0</span><small class="text-muted">ms</small></h3>
-                            <div class="text-muted">
-                                REAL-TIME
-                            </div>
+                <div class="card mb-4 shadow-sm bg-dark">
+                    <div class="card-header">
+                        <h4 class="my-0 font-weight-normal text-white">Temperature</h4>
+                    </div>
+                    <div class="card-body">
+                        <div class="card-title ">
+                            <h1 class="text-danger p-2">Hangar 1: <span id="temperatureH1" class="text-white"></span> <small class="text-muted">°C</small></h1>
+                            <h1 class="text-warning p-2">Hangar 2: <span id="temperatureH1" class="text-white"></span> <small class="text-muted">°C</small></h1>
+                        </div>
+                        <div class="p-2">
+                            <button type="button" class="btn btn-lg btn-block btn-success" data-toggle="modal" data-target="#modalTemperature">Dasboard started</button>
                         </div>
                     </div>
                 </div>
-            </div>
-            <!-- brightness -->
-            <div class="col-lg-4 col-md-6">
-                <div class="card mb-4 shadow rounded-lg" style="background-color: #2b3595;">
-                    <div class="card-body flexbox-b">
-                        <div class="easypie mr-4" data-percent="42" data-bar-color="#5c6bc0" data-size="80" data-line-width="8">
-                            <span class="easypie-data font-26 text-primary"><i class="ti-world"></i></span>
-                            <canvas id="Average" height="50" width="60"></canvas></div>
-                        <div>
-                            <h3 class="font-strong text-success">
-                                <span id="TotalDatabase"></span>
-                                <small class="text-muted">length</small></h3>
-                            <div class="text-muted">AVERAGE ENVIROMENT</div>
+                <div class="card mb-4 shadow-sm bg-dark">
+                    <div class="card-header">
+                        <h4 class="my-0 font-weight-normal text-white">Humidity</h4>
+                    </div>
+                    <div class="card-body">
+                        <div class="card-title">
+                            <h1 class="text-danger p-2">Hangar 1: <span id="humidityH1" class="text-white"></span> <small class="text-muted">%</small></h1>
+                            <h1 class="text-warning p-2">Hangar 2: <span id="humidityH1" class="text-white"></span> <small class="text-muted">%</small></h1>
                         </div>
+                        <button type="button" class="btn btn-lg btn-block btn-success" data-toggle="modal" data-target="#modalHumidity">Dasboard started</button>
                     </div>
                 </div>
             </div>
-            <!-- total data -->
-            <div class="col-lg-4 col-md-6">
-                <div class="card mb-4 shadow rounded-lg" style="background-color: #7045af;">
-                    <div class="card-body flexbox-b">
-                        <div class="easypie mr-4" data-percent="70" data-bar-color="#ff4081" data-size="80" data-line-width="8">
-                            <span class="easypie-data text-pink" style="font-size:32px;"><i class="la la-tags"></i></span>
-                            <canvas height="40" width="80"></canvas></div>
-                        <div>
-                            <h3 class="font-strong text-warning">0</h3>
-                            <div class="text-muted">TOTAL ERROR</div>
-                        </div>
+    </section>
+    <!-- chart -->
+    <section class="p-2">
+        <div class="container">
+            <h2 class="text-white font-weight-bold">Processes</h2>
+            <p class="text-muted">The system analyzes the chart in real time from the sensor</p>
+            <p class="text-white">Temperature chart at hangar Tan Son Nhat Airport</p>
+            <div class="row">
+                <!-- vanvas -->
+                <div class="col-md-10 row-cols-1">
+                    <canvas id="temperatureHangar" width="800" height="300"></canvas>
+                </div>
+                <!-- table -->
+                <div class="col-md-2">
+                    <p class="text-white">Details Temperature</p>
+                    <div>
+                        <p class="text-danger">----- Hangar one: <span id="tempHangarOne"> </span>°C</p>
+                        <p class="text-warning">----- Hangar two: <span id="tempHangarTwo"> </span>°C</p>
+                    </div>
+                </div>
+            </div>
+            <p class="text-white">Humidity chart at hangar Tan Son Nhat Airport</p>
+            <div class="row">
+                <!-- vanvas -->
+                <div class="col-md-10 row-cols-1">
+                    <canvas id="humidityHangar" width="800" height="300"></canvas>
+                </div>
+                <!-- table -->
+                <div class="col-md-2">
+                    <p class="text-white">Details Humidity</p>
+                    <div>
+                        <p class="text-danger">----- Hangar one: <span id="humHangarOne">  </span>%</p>
+                        <p class="text-warning">----- Hangar two: <span id="humHangarTwo">  </span>%</p>
                     </div>
                 </div>
             </div>
         </div>
-        <!-- chart screen -->
-        <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-            <h1 class="h2 text-white">Enviroment</h1>
-            <div class="btn-toolbar mb-2 mb-md-0">
-                <div class="btn-group mr-2">
-                    <button class="btn btn-sm btn-outline-secondary" type="button">Export</button>
-                </div>
-            </div>
-        </div>
-        <section id="Dynamic">
-            <canvas class="my-4 w-100" id="temperature" width="800" height="480"></canvas>
-        </section>
-
-        <!-- CONTROL DEVICE -->
-        <div class="site-section" style="background-color: #24292e;">
-            <div class="container ">
-                <div class="row mb-4 ">
-                    <div class="col-md-7">
-                        <h2 class="heading-21921 text-white text-center">Device</h2>
-                    </div>
-                </div>
-                <div class="row text-white align-items-center text-center h-100">
-                    <div id="light" class="shadow col-md-4 status-button border rounded-lg justify-content-center mb-2" style="height:150px; border: none; " type="submit">
-                        <div class="row justify-content-center mb-4">
-                            <h5 class="text-white font-weight-bold px-1">Light</h5>
-                        </div>
-                        <div class="row justify-content-center">
-                            <div class="d-flex flex-row">
-                                <div class="btn-group mr-2" role="group" aria-label="First group">
-                                    <button type="button" class="btn btn-secondary"><span data-feather="sun"></span></button>
-                                </div>
-                                <div class="btn-group mr-2" role="group" aria-label="Second group">
-                                    <button type="button" class="btn btn-secondary"><span data-feather="sun"></span></button>
-                                </div>
-                                <div class="btn-group mr-2" role="group" aria-label="Third group">
-                                    <button type="button" class="btn btn-secondary"><span data-feather="moon"></span></button>
-                                </div>
-                                <div class="btn-group mr-2" role="group" aria-label="Fourth group">
-                                    <button type="button" class="btn btn-secondary"><span data-feather="sun"></span></button>
-                                </div>
-                                <div class="btn-group mr-2" role="group" aria-label="Fifth group">
-                                    <button type="button" class="btn btn-secondary"><span data-feather="moon"></span></button>
-                                </div>
-                                <div class="btn-group mr-2" role="group" aria-label="All group">
-                                    <button type="button" class="btn btn-success"><span data-feather="power"></span></button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div id="light" class="shadow col-md-4 status-button border rounded-lg justify-content-center mb-2 " style="height:150px; border: none; " type="submit">
-                        <div class="row justify-content-center mb-4">
-                            <h5 class="text-white font-weight-bold px-1">Ventilation</h5>
-                        </div>
-                        <div class="row justify-content-center">
-                            <div class="d-flex flex-row">
-                                <div class="btn-group mr-2" role="group" aria-label="First group">
-                                    <button type="button" class="btn btn-secondary"><span data-feather="aperture"></span></button>
-                                </div>
-                                <div class="btn-group mr-2" role="group" aria-label="Second group">
-                                    <button type="button" class="btn btn-secondary"><span data-feather="circle"></span></button>
-                                </div>
-                                <div class="btn-group mr-2" role="group" aria-label="Third group">
-                                    <button type="button" class="btn btn-secondary"><span data-feather="circle"></span></button>
-                                </div>
-                                <div class="btn-group mr-2" role="group" aria-label="Fourth group">
-                                    <button type="button" class="btn btn-secondary"><span data-feather="chrome"></span></button>
-                                </div>
-                                <div class="btn-group mr-2" role="group" aria-label="Fifth group">
-                                    <button type="button" class="btn btn-secondary"><span data-feather="aperture"></span></button>
-                                </div>
-                                <div class="btn-group mr-2" role="group" aria-label="All group">
-                                    <button type="button" class="btn btn-danger"><span data-feather="power"></span></button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div id="light" class="shadow col-md-4 status-button border rounded-lg justify-content-center mb-2" style="height:150px; border: none; " type="submit">
-                        <div class="row justify-content-center mb-4">
-                            <h5 class="text-white font-weight-bold px-1">Air Condition</h5>
-                        </div>
-                        <div class="row justify-content-center">
-                            <div class="d-flex flex-row">
-                                <div class="btn-group mr-2" role="group" aria-label="First group">
-                                    <button type="button" class="btn btn-secondary"><span data-feather="minus-circle"></span></button>
-                                </div>
-                                <div class="btn-group mr-2" role="group" aria-label="Fourth group">
-                                    <div type="button" class="btn border text-white">
-                                        <span class="font-weight-bold"> 30<span>°C</span></span>
-                                    </div>
-                                </div>
-                                <div class="btn-group mr-2" role="group" aria-label="Second group">
-                                    <button type="button" class="btn btn-secondary"><span data-feather="plus-circle"></span></button>
-                                </div>
-
-                                <div class="btn-group mr-2" role="group" aria-label="All group">
-                                    <button type="button" class="btn btn-danger"><span data-feather="power"></span></button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div id="light" class="shadow col-md-4 status-button border rounded-lg justify-content-center mb-2" style="height:150px; border: none; " type="submit">
-                        <div class="row justify-content-center mb-4">
-                            <h5 class="text-white font-weight-bold px-1">Windows</h5>
-                        </div>
-                        <div class="row justify-content-center">
-                            <div class="d-flex flex-row">
-                                <div class="btn-group mr-2" role="group" aria-label="First group">
-                                    <button type="button" class="btn btn-secondary"><span data-feather="columns"></span></button>
-                                </div>
-                                <div class="btn-group mr-2" role="group" aria-label="Second group">
-                                    <button type="button" class="btn btn-secondary"><span data-feather="columns"></span></button>
-                                </div>
-                                <div class="btn-group mr-2" role="group" aria-label="Third group">
-                                    <button type="button" class="btn btn-secondary"><span data-feather="columns"></span></button>
-                                </div>
-                                <div class="btn-group mr-2" role="group" aria-label="Fourth group">
-                                    <button type="button" class="btn btn-secondary"><span data-feather="columns"></span></button>
-                                </div>
-                                <div class="btn-group mr-2" role="group" aria-label="Fifth group">
-                                    <button type="button" class="btn btn-secondary"><span data-feather="columns"></span></button>
-                                </div>
-                                <div class="btn-group mr-2" role="group" aria-label="All group">
-                                    <button type="button" class="btn btn-success"><span data-feather="power"></span></button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div id="light" class="shadow col-md-4 status-button border rounded-lg justify-content-center mb-2" style="height:150px; border: none; " type="submit">
-                        <div class="row justify-content-center mb-4">
-                            <h5 class="text-white font-weight-bold px-1">PCCC</h5>
-                        </div>
-                        <div class="row justify-content-center">
-                            <div class="d-flex flex-row">
-                                <div class="btn-group mr-2" role="group" aria-label="First group">
-                                    <button type="button" class="btn btn-secondary"><span data-feather="droplet"></span></button>
-                                </div>
-                                <div class="btn-group mr-2" role="group" aria-label="Second group">
-                                    <button type="button" class="btn btn-secondary"><span data-feather="droplet"></span></button>
-                                </div>
-                                <div class="btn-group mr-2" role="group" aria-label="Third group">
-                                    <button type="button" class="btn btn-secondary"><span data-feather="droplet"></span></button>
-                                </div>
-                                <div class="btn-group mr-2" role="group" aria-label="Fourth group">
-                                    <button type="button" class="btn btn-secondary"><span class="font-weight-bold">EMERGENCY</span></button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div id="light" class="shadow col-md-4 status-button border rounded-lg justify-content-center mb-2" style="height:150px; border: none; " type="submit">
-                        <div class="row justify-content-center mb-4">
-                            <h5 class="text-white font-weight-bold px-1">Other</h5>
-                        </div>
-                        <div class="row justify-content-center">
-                            <div class="d-flex flex-row">
-                                <div class="btn-group mr-2" role="group" aria-label="First group">
-                                    <button type="button" class="btn btn-secondary"><span data-feather="droplet"></span></button>
-                                </div>
-                                <div class="btn-group mr-2" role="group" aria-label="Second group">
-                                    <button type="button" class="btn btn-secondary"><span data-feather="droplet"></span></button>
-                                </div>
-                                <div class="btn-group mr-2" role="group" aria-label="Third group">
-                                    <button type="button" class="btn btn-secondary"><span data-feather="droplet"></span></button>
-                                </div>
-                                <div class="btn-group mr-2" role="group" aria-label="Fourth group">
-                                    <button type="button" class="btn btn-secondary"><span class="font-weight-bold">EMERGENCY</span></button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+    </section>
     <!-- footer -->
-    <footer class="p-4">
-        <div class="row justify-content-center">>
-            <small class="d-block text-muted">&copy; Designed by Phong. Pham Thanh @2020 | <a href="mailto:phongpham663@gmail.com">Email</a> | <a href="">Twiiter</a> | <a href="">Github</a></small>
+    <div id="footer"></div>
+    <!-- Modal Temperature-->
+    <div class="modal fade" id="modalTemperature" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+            <div class="modal-content bg-dark ">
+                <canvas id="Real-Time" width="800" height="500"></canvas>
+            </div>
         </div>
-    </footer>
-    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    </div>
+    <!-- Modal Humidity-->
+    <div class="modal fade" id="modalHumidity" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+            <div class="modal-content bg-dark ">
+                <canvas id="Real-Time" width="800" height="500"></canvas>
+            </div>
+        </div>
+    </div>
+    <!-- script -->
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" crossorigin="anonymous"></script>
     <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.4.1.min.js "></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js " integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6 " crossorigin="anonymous "></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js " integrity="sha384-6khuMg9gaYr5AxOqhkVIODVIvm9ynTT5J4V1cfthmT+emCG6yVmEZsRHdxlotUnm " crossorigin="anonymous "></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-    <script src="https://unpkg.com/feather-icons"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js " crossorigin="anonymous "></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js " crossorigin="anonymous "></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" " crossorigin="anonymous "></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0 "></script>
+    <script src="https://unpkg.com/feather-icons "></script>
     <!-- Firebase App (the core Firebase SDK) is always required and must be listed first -->
     <script src="https://www.gstatic.com/firebasejs/7.10.0/firebase.js "></script>
-    <script src="assets/js/firebase/firebase.js"></script>
-    <script src="assets/js/main.js "></script>
-    <script src="assets/js/include_file.js"></script>
+    <script src="assets/js/hardware/manage_firebase.js "></script>
+    <script src="assets/js/hardware/processes.js "></script>
+    <script src="assets/js/hardware/real_time.js "></script>
+    <script src="assets/js/include_file.js "></script>
 </body>
 
 </html>

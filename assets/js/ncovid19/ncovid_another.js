@@ -11,6 +11,7 @@ var firebaseConfig = {
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
 
+
 axios.get('https://api.thevirustracker.com/free-api?countryTotals=ALL').then(function(response) {
     let rawData = arrData(response.data.countryitems[0]);
     myTable(rawData);
@@ -26,7 +27,6 @@ function arrData(objData) {
 }
 
 function myData(data) {
-    console.log(data);
     let list = [];
     let getRecovered = [];
     let getDeath = [];
@@ -126,8 +126,6 @@ function writeNewPost(_title, _code, _source, _case, _new_case, _deaths, _new_de
         url: _source,
         time: _time,
     };
-
-    console.log("Helllo Post");
     // Get a key for a new Post.
     var newPostKey = firebase.database().ref().child('posts').push().key;
 
