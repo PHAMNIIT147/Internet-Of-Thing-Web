@@ -8,6 +8,7 @@
     <link rel="icon" href="static/images/logo/logo.png">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" icrossorigin="anonymous">
     <link href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/style.css">
 </head>
 
 <body style="background-color: #24292e;">
@@ -57,6 +58,14 @@
                 </div>
             </div>
     </section>
+    <section id="device">
+        <div class="container">
+            <h2 class="text-white font-weight-bold"> Control devices</h2>
+            <div class="p-2">
+                <button type="button" class="btn btn-lg btn-info" data-toggle="modal" data-target="#modalDevicesLight">Devices Light</button>
+            </div>
+        </div>
+    </section>
     <!-- chart -->
     <section class="p-2">
         <div class="container">
@@ -72,6 +81,8 @@
                 <div class="col-md-2">
                     <p class="text-white">Details Temperature</p>
                     <div>
+                        <p class="text-info">Date: <span class="date"></span></p>
+                        <p class="text-info">Time: <span class="time"></span></p>
                         <p class="text-danger">----- Hangar one: <span id="tempHangarOne"> </span>°C</p>
                         <p class="text-warning">----- Hangar two: <span id="tempHangarTwo"> </span>°C</p>
                     </div>
@@ -87,6 +98,8 @@
                 <div class="col-md-2">
                     <p class="text-white">Details Humidity</p>
                     <div>
+                        <p class="text-info">Date: <span class="date"></span></p>
+                        <p class="text-info">Time: <span class="time"></span></p>
                         <p class="text-danger">----- Hangar one: <span id="humHangarOne">  </span>%</p>
                         <p class="text-warning">----- Hangar two: <span id="humHangarTwo">  </span>%</p>
                     </div>
@@ -100,7 +113,7 @@
     <div class="modal fade" id="modalTemperature" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
             <div class="modal-content bg-dark ">
-                <canvas id="Real-Time" width="800" height="500"></canvas>
+                <canvas id="dynamicTemp" width="800" height="500"></canvas>
             </div>
         </div>
     </div>
@@ -108,17 +121,68 @@
     <div class="modal fade" id="modalHumidity" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
             <div class="modal-content bg-dark ">
-                <canvas id="Real-Time" width="800" height="500"></canvas>
+                <canvas id="dynamicHum" width="800" height="500"></canvas>
             </div>
         </div>
     </div>
-    <!-- script -->
-    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" crossorigin="anonymous"></script>
-    <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.4.1.min.js "></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js " crossorigin="anonymous "></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js " crossorigin="anonymous "></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" " crossorigin="anonymous "></script>
+    <!-- Modal Light-->
+    <div class="modal fade" id="modalDevicesLight" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+            <div class="modal-body">
+                <div class="container">
+                    <div class="modal-content bg-dark">
+                        <div class="text-center p-4">
+                            <h3 class="text-white">Thinh's Lights</h3>
+                        </div>
+                        <div class=" row p-4">
+                            <div class="row">
+                                <!-- recovered -->
+                                <div class="col-lg-3 col-md-4">
+                                    <div class="card mb-4 rounded-lg bg-dark border-success ">
+                                        <div class="card-body">
+
+                                            <h4 class="text-center text-success"> Bads Room </h4>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-3 col-md-4">
+                                    <div class="card mb-4 rounded-lg bg-dark border-success ">
+                                        <div class="card-body">
+
+                                            <h4 class="text-center text-success"> Window Out</h4>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-3 col-md-4">
+                                    <div class="card mb-4 rounded-lg bg-dark border-light ">
+                                        <div class="card-body">
+                                            <h4 class="text-center text-white"> Living Room </h4>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-3 col-md-4">
+                                    <div class="card mb-4 rounded-lg bg-dark border-light ">
+                                        <div class="card-body">
+
+                                            <h4 class="text-center text-white"> Cook Room </h4>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- script -->
+            <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" crossorigin="anonymous"></script>
+            <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.4.1.min.js "></script>
+            <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js " crossorigin="anonymous "></script>
+            <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js " crossorigin="anonymous "></script>
+            <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" crossorigin="anonymous"></script>
+            <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" " crossorigin="anonymous "></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0 "></script>
     <script src="https://unpkg.com/feather-icons "></script>
     <!-- Firebase App (the core Firebase SDK) is always required and must be listed first -->

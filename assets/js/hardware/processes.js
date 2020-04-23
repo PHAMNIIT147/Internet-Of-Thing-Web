@@ -1,11 +1,15 @@
 let temperature = document.getElementById('temperatureHangar').getContext('2d');
 let humidity = document.getElementById('humidityHangar').getContext('2d');
+let dynamicTemp = document.getElementById('dynamicTemp').getContext('2d');
+let dynamicHum = document.getElementById('dynamicHum').getContext('2d');
+
 let averageTemp = document.getElementById('tempHangarOne');
 let averageHum = document.getElementById('humHangarOne');
-
+/* innerText */
 let _temperature = document.getElementById('temperatureH1');
 let _humidity = document.getElementById('humidityH1');
 let _status = document.getElementById('status')
+
 
 $(function() {
     let database = firebase.database();
@@ -23,14 +27,17 @@ function realData(data) {
     let record = data.val();
 
     let temp = record.Temperature;
-
+    let hum = record.Humidity;
     _temperature.innerText = temp;
-    _humidity.innerText = record.Humidity;
+    _humidity.innerText = hum;
     if (temp > 35) {
         _status.innerHTML = "<img src='static/images/hangar/hangar-fire-icon.png' height='200'>";
     } else {
         _status.innerHTML = "<img src='static/images/hangar/hangar-stable-icon.png' height='200'>";
     }
+
+    realTimeChart(temp, dynamicTemp);
+    realTimeChart(hum, dynamicHum);
 }
 
 
@@ -64,12 +71,17 @@ function myData(data) {
 }
 
 function drawDashboard(data) {
+    let date = new Date();
+
     let averageTemperature = data.temperature.reduce((a, b) => a + b, 0) / data.temperature.length;
     let averageHumidity = data.humidity.reduce((a, b) => a + b, 0) / data.humidity.length;
 
     myDashboard(data.temperature, data.counter, temperature);
 
     myDashboard(data.humidity, data.counter, humidity);
+
+    $('.date').text(date.toLocaleDateString());
+    $('.time').text(date.toLocaleTimeString());
 
     average({ averageTemperature, averageHumidity });
 }
@@ -127,7 +139,6 @@ function myDashboard(mData, label, chart) {
                     },
                     scaleLabel: {
                         display: true,
-                        labelString: 'Celsius'
                     },
                 }],
                 xAxes: [{
@@ -142,11 +153,58 @@ function myDashboard(mData, label, chart) {
                         stepSize: 200
                     }
                 }]
-            }
+            },
+            animation: {
+                duration: 0
+            },
         }
     });
 }
 
 function errData(err) {
     console.alert(err);
+}
+
+function realTimeChart(data, chart) {
+    var myChart = new Chart(chart, {
+        type: 'bar',
+        label: ['Hangar 1'],
+        data: {
+            datasets: [{
+                label: 'Real-Time',
+                data: [data],
+                backgroundColor: [
+                    'rgba(255, 232, 132, 0.2)',
+                ],
+                borderColor: [
+                    'rgba(255, 232, 132, 1)',
+
+                ],
+                borderWidth: 1,
+                fill: false,
+            }],
+
+        },
+        options: {
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        fontSize: 12,
+                        callback: function(value) {
+                            return value;
+                        },
+                        max: 100,
+                        min: 10,
+                        stepSize: 10
+                    },
+                    scaleLabel: {
+                        display: true,
+                    },
+                }],
+            },
+            animation: {
+                duration: 0
+            },
+        }
+    });
 }
