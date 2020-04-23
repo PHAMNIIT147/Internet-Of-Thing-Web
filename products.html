@@ -61,8 +61,13 @@
     <section id="device">
         <div class="container">
             <h2 class="text-white font-weight-bold"> Control devices</h2>
-            <div class="p-2">
-                <button type="button" class="btn btn-lg btn-info" data-toggle="modal" data-target="#modalDevicesLight">Devices Light</button>
+            <div class="p-2 row">
+                <div class="col-md-1">
+                    <button type="button" class="btn btn-lg btn-info" data-toggle="modal" data-target="#modalDevicesLight">Lights</button>
+                </div>
+                <div class="col-md-1">
+                    <button type="button" class="btn btn-lg btn-warning text-white" data-toggle="modal" data-target="#modalParkingFly">Parking</button>
+                </div>
             </div>
         </div>
     </section>
@@ -176,21 +181,46 @@
                     </div>
                 </div>
             </div>
-            <!-- script -->
-            <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" crossorigin="anonymous"></script>
-            <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.4.1.min.js "></script>
-            <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js " crossorigin="anonymous "></script>
-            <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js " crossorigin="anonymous "></script>
-            <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" crossorigin="anonymous"></script>
-            <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" " crossorigin="anonymous "></script>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0 "></script>
-    <script src="https://unpkg.com/feather-icons "></script>
-    <!-- Firebase App (the core Firebase SDK) is always required and must be listed first -->
-    <script src="https://www.gstatic.com/firebasejs/7.10.0/firebase.js "></script>
-    <script src="assets/js/hardware/manage_firebase.js "></script>
-    <script src="assets/js/hardware/processes.js "></script>
-    <script src="assets/js/hardware/real_time.js "></script>
-    <script src="assets/js/include_file.js "></script>
-</body>
-
+        </div>
+    </div>
+    <!-- Parking -->
+    <div class="modal fade" id="modalParkingFly" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content bg-dark">
+                <div class="container-fluid">
+                    <div class="column p-4">
+                        <div class="row text-center">
+                            <div class="p-2">
+                                <h4 class="text-danger font-weight-bold">Hangar 1</h4>
+                                <div class="btn btn-block btn-success" id="slot1"></div>
+                                <div class="btn btn-block btn-success"> <img src="static/images/hangar/plane.png" alt="plane" width="400"> </div>
+                            </div>
+                            <div class="p-2">
+                                <h4 class="text-warning font-weight-bold">Hangar 2</h4>
+                                <div class="btn btn-block btn-success"> <img src="static/images/hangar/plane.png" alt="plane" width="400"> </div>
+                                <div class="btn btn-block btn-success"> <img src="static/images/hangar/plane.png" alt="plane" width="400"> </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- script -->
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" crossorigin="anonymous"></script>
+    <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.4.1.min.js "></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js " crossorigin="anonymous "></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js " crossorigin="anonymous "></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" " crossorigin="anonymous "></script>
+            <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0 "></script>
+            <script src="https://unpkg.com/feather-icons "></script>
+            <!-- Firebase App (the core Firebase SDK) is always required and must be listed first -->
+            <script src="https://www.gstatic.com/firebasejs/7.10.0/firebase.js "></script>
+            <script src="assets/js/hardware/manage_firebase.js "></script>
+            <script src="assets/js/hardware/processes.js "></script>
+            <script src="assets/js/hardware/real_time.js "></script>
+            <script src="assets/js/hardware/parking.js "></script>
+            <script src="assets/js/include_file.js "></script>
+    </body>
 </html>
