@@ -75,6 +75,7 @@ function myData(data) {
 }
 
 function myTable(dataSet) {
+    console.log(dataSet);
     let myDataTable = $('#datatable').DataTable({
         data: dataSet,
         columns: [
