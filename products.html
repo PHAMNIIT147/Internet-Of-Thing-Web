@@ -8,15 +8,23 @@
     <link rel="icon" href="static/images/logo/logo.png">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" icrossorigin="anonymous">
     <link href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/bootstrap.css">
     <link rel="stylesheet" href="assets/css/style.css">
+    <style>
+        .center {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+    </style>
 </head>
 
-<body style="background-color: #24292e;">
+<body style="background-color: #2d2d2d;">
     <!-- navbar -->
     <nav class="site-header sticky-top py-1 bg-dark" id="navbar"></nav>
     <!-- title -->
-    <div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
-        <h1 class="display-4 text-white font-weight-bold">Hangar</h1>
+    <div class="pricing-header row px-3 py-3 pb-4 mx-auto justify-content-center">
+        <h1 class="text-white display-4 font-weight-bold">Hangar</h1>
     </div>
     <!-- hangar real-time -->
     <section class="p-2">
@@ -57,9 +65,15 @@
                     </div>
                 </div>
             </div>
+            <hr>
+            <img src="static/images/icon/problem.svg" alt="" width="100" class="center">
+            <div class="text-center justify-content-center">
+                <span id="warning" class="status"></span>
+            </div>
     </section>
     <section id="device">
         <div class="container">
+            <hr>
             <h2 class="text-white font-weight-bold"> Control devices</h2>
             <div class="p-2 row">
                 <div class="col-md-1">
@@ -74,6 +88,7 @@
     <!-- chart -->
     <section class="p-2">
         <div class="container">
+            <hr>
             <h2 class="text-white font-weight-bold">Processes</h2>
             <p class="text-muted">The system analyzes the chart in real time from the sensor</p>
             <p class="text-white">Temperature chart at hangar Tan Son Nhat Airport</p>
@@ -88,12 +103,13 @@
                     <div>
                         <p class="text-info">Date: <span class="date"></span></p>
                         <p class="text-info">Time: <span class="time"></span></p>
-                        <p class="text-danger">----- Hangar one: <span id="tempHangarOne"> </span>°C</p>
-                        <p class="text-warning">----- Hangar two: <span id="tempHangarTwo"> </span>°C</p>
+                        <p class="text-danger">-- Hangar one: <span id="tempHangarOne"> </span>°C</p>
+                        <p class="text-warning">-- Hangar two: <span id="tempHangarTwo"> </span>°C</p>
                     </div>
                 </div>
             </div>
-            <p class="text-white">Humidity chart at hangar Tan Son Nhat Airport</p>
+            <hr>
+            <p class="text-white p-4">Humidity chart at hangar Tan Son Nhat Airport</p>
             <div class="row">
                 <!-- vanvas -->
                 <div class="col-md-10 row-cols-1">
@@ -105,8 +121,26 @@
                     <div>
                         <p class="text-info">Date: <span class="date"></span></p>
                         <p class="text-info">Time: <span class="time"></span></p>
-                        <p class="text-danger">----- Hangar one: <span id="humHangarOne">  </span>%</p>
-                        <p class="text-warning">----- Hangar two: <span id="humHangarTwo">  </span>%</p>
+                        <p class="text-danger">-- Hangar one: <span id="humHangarOne">  </span>%</p>
+                        <p class="text-warning">-- Hangar two: <span id="humHangarTwo">  </span>%</p>
+                    </div>
+                </div>
+            </div>
+            <hr>
+            <p class="text-white p-4">Heat chart at hangar Tan Son Nhat Airport</p>
+            <div class="row">
+                <!-- vanvas -->
+                <div class="col-md-10 row-cols-1">
+                    <canvas id="heatHangar" width="800" height="300"></canvas>
+                </div>
+                <!-- table -->
+                <div class="col-md-2">
+                    <p class="text-white">Details Humidity</p>
+                    <div>
+                        <p class="text-info">Date: <span class="date"></span></p>
+                        <p class="text-info">Time: <span class="time"></span></p>
+                        <p class="text-danger">-- Hangar one: <span id="heatHangarOne">  </span>°C</p>
+                        <p class="text-warning">-- Hangar two: <span id="heatHangarTwo">  </span>°C</p>
                     </div>
                 </div>
             </div>
@@ -207,20 +241,22 @@
         </div>
     </div>
     <!-- script -->
-    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" crossorigin="anonymous"></script>
-    <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.4.1.min.js "></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js " crossorigin="anonymous "></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js " crossorigin="anonymous "></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" " crossorigin="anonymous "></script>
-            <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0 "></script>
-            <script src="https://unpkg.com/feather-icons "></script>
-            <!-- Firebase App (the core Firebase SDK) is always required and must be listed first -->
-            <script src="https://www.gstatic.com/firebasejs/7.10.0/firebase.js "></script>
-            <script src="assets/js/hardware/manage_firebase.js "></script>
-            <script src="assets/js/hardware/processes.js "></script>
-            <script src="assets/js/hardware/real_time.js "></script>
-            <script src="assets/js/hardware/parking.js "></script>
-            <script src="assets/js/include_file.js "></script>
-    </body>
+    <script src="https://www.gstatic.com/firebasejs/7.10.0/firebase.js "></script>
+    <script src="https://unpkg.com/jquery@3.4.1/dist/jquery.min.js"></script>
+    <script src="https://unpkg.com/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+    <script src="https://unpkg.com/bootstrap@4.4.1/dist/js/bootstrap.min.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0 "></script>
+    <script src="https://unpkg.com/feather-icons "></script>
+    <!-- Firebase App (the core Firebase SDK) is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/7.10.0/firebase.js "></script>
+    <script src="assets/js/hardware/manage_firebase.js "></script>
+    <script src="assets/js/hardware/processes.js "></script>
+    <script src="assets/js/hardware/affect.js"></script>
+    <script src="assets/js/hardware/parking.js "></script>
+    <script src="assets/js/include_file.js "></script>
+</body>
+
 </html>
