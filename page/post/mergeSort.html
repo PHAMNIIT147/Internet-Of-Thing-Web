@@ -1,87 +1,102 @@
-<hr>
-<h1 class="font-weight-bold text-white">Merge Sort</h1>
-<p class="text-muted">Posted on May 4, 2020 at 17:14 PM</p>
-<img src="static/images/blog/mergeSort/merge_sort.png" alt="preview blog" width="800">
-
-<hr>
-<p class="lead">
-    Tiếp tục chương thực hiện chia sẻ về thuật toán và thưởng thức loạt bài giảng CS50 về các thuật toán. Merge Sort (Sắp xếp hợp nhất) là tên gọi của một công thức mà qua đó chung ta có thể sắp xếp một bộ số đã cho theo thứ tự tăng (Increase) hoặc giảm (Decrease).
-    Được phát minh bởi ông Jonh Von Neumann (1945).
-</p>
-<p>
-    Merge Sort hoạt động dựa trên phương pháp phân chia và để trị (Devide and Conquer), nói nôm na là chúng ta giải quyết vấn đề bằng cách bâm nhỏ nó thành các vấn đề nhỏ nhất có thể (sub-problem), sau đó thực hiện giải quyết từng vấn đề phụ bằng cách đệ
-    quy và kết hợp (Recursion Merge) cuối cùng để đạt được giải pháp cuối cùng mà chúng ta mong muốn. Đây là một trong số thuật toán thường được các chị công ty công nghệ thường hỏi trong quá trình phỏng vấn.
-</p>
-<p class="font-weight-bold">Ứng dụng Merge Sort ?</p>
-<p> Nếu các bạn đã tìm hiểu về Binary Search, Merge Sort được ứng dụng cơ bản để sắp xếp bên trong nó vì độ phức tạp của Merge Sort O(nlogn).</p>
-
-<p> Trước khi đi chúng ta bắt đầu vào khái niệm chúng ta sẽ chú ý một sô thuật ngữ được đề cập đến trong bài và một số sẽ được dùng đặt biến bên trong Source Code:</p>
-<img src="static/images/blog/mergeSort/notes.png" alt="" class="center">
-<ul class="p-4">
-    <li> start: là thành phần đầu tiên bên phải của mảng </li>
-    <li> mid: được dùng để xác định giúp phân chia hai nửa mảng bằng nhau, mid được tính như sau: mid = (start + end) / 2.</li>
-    <li> end: là thành phần cuối cùng bên trái của mảng </li>
-</ul>
-<hr>
-<p class="font-weight-bold">Merge Sort là cái gì ?</p>
-<hr>
-<p>
-    Merge Sort là một kỹ thuật sắp xếp dựa trên kỹ thuật phân chia và để trị (Devide and Conquer). Với độ phức tạp thời gian trong trường hợp xấu nhất ( Wort Case ) là O(nlogn). Merge sort là một trong những thuật toán đáng chú ý nhất. Merge Sort trước tiên
-    sẽ bâm nhỏ mảng chưa được sắp xếp thành hai nửa mảng bằng nhau và sau đó kết hợp chúng lại theo cách sắp xếp.
-</p>
-<p>Để bạn có thể hiểu cách nó hoạt động theo cách dễ dàng tôi sẽ bắt đầu cho một mảng chưa được sắp xếp như bên dưới có kích thước tối đa là 8 phần tử (item):</p>
-<hr>
-<img src="static/images/blog/mergeSort/unsort.png" alt="" class="center">
-<hr>
-<p>
-    Như khái niệm tôi đã giới thiệu với bạn Merge Sort trước tiên nó sẽ chia toàn bộ mảng thành hai nửa mảng bằng nhau. Ở đây bạn thấy rằng một mảng gồm 8 phần tử được chia thành hai mảng bằng nhau với mỗi mảng có 4 phần tử. Nhưng thực sự tới đây công việc
-    chúng ta chưa hoàn thành, Như khái niệm của kỹ thuật phân chia và để trị (Devide and Conquer)" là nó sẽ chia các vấn đề thành các vấn đề nhỏ nhất có thể" vì vậy trong hai nữa mảng này chúng ta sẽ tiếp tục thực hiện chia tiếp đến khi nào không thể
-    chia được nữa.
-</p>
-<hr>
-<img src="static/images/blog/mergeSort/mid.png" alt="" class="center">
-<hr>
-<p>Bây giờ chúng ta sẽ chia hai mảng này thành một nữa. Ở đó bạn sẽ thấy chúng ta có 4 mảng bằng nhau với 2 phần tử mỗi mảng.</p>
-<hr>
-<img src="static/images/blog/mergeSort/4.png" alt="" class="center">
-<hr>
-<p>Nhưng chúng ta không dừng lại được phải tiếp tục chia 4 mảng thành 8 mảng bằng nhau mỗi mảng có 1 phần tử và không thể chia thêm được nữa:</p>
-<hr>
-<img src="static/images/blog/mergeSort/devide.png" alt="" class="center">
-<hr>
-<p>Ngay bây giờ chúng ta sẽ kết hợp (Merge) chúng lại với nhau theo cách mà chúng ta đã chia nó ra. Nó chỉ là quá trinh đi ngược lại từ bên dưới lên</p>
-<p class="font-weight-bold">Vậy Merge Sort ở đâu ?</p>
-<p>Trong quá trình mà chúng ta kết hợp mảng được chia lại song song đó sẽ thực hiện quá trình sắp xếp (Sort) đó chính là tên gọi của nó Merge Sort.</p>
-<p>Quá trình sẽ bắt đầu với việc chúng ta sẽ so sánh các phần tử của mỗi mảng và sau đó kết hợp chúng vào một danh sách khác được sắp xếp (temple array) để lưu tạm ở đó đã, quá trình này hoạt động bằng cách sắp xếp đến đâu sẽ gợp lại đến đó và lưu vào mảng
-    lưu trữ tạm.</p>
-<hr>
-<img src="static/images/blog/mergeSort/sort1.png" alt="" class="center">
-<hr>
-<p>
-    Chúng ta sẽ thấy rằng 5 và 2 chưa được sắp xếp vì vậy chúng ta sẽ sắp xếp nó và lưu vào mảng tạm (Temple Array). Tiếp theo chúng ta thấy 4 và 1 chưa được sắp xếp và chúng ta cũng thực hiện quá trình tương tự như trên và luu vào mảng tạm. Cuối cùng chúng
-    ta sẽ có 4 mảng bằng nhau với 2 phần tử mỗi mảng
-</p>
-<p>Trong lần lặp tiếp theo của việc Merge Sort, chúng ta sẽ so sánh sánh giữa 2 mảng mỗi mảng có 2 phần tử và hợp nhất chúng lại thành một danh sách các giá trị được sắp xếp. Tiếp theo chúng ta cũng thực hiện quá trình tương tự cho 2 mảng tiếp theo.
-</p>
-<hr>
-<img src="static/images/blog/mergeSort/sort2.png " alt=" " class="center">
-<hr>
-<p>Dây là lần lặp cuối cùng, như chúng ta thấy ở trên có 2 nửa mảng bằng nhau mỗi mảng có 4 phần tử , chúng ta sẽ thực hiện quá trình so sánh 2 mảng này và hợp nhất chúng lại thành mảng cuối cùng.</p>
-<hr>
-<img src="static/images/blog/mergeSort/merge.png " alt=" " class="center">
-<hr>
-<p>Sau khi hợp nhất, mảng tạm được sắp xếp ( Temple Array) sẽ trả lại giá trị cho mảng chính ban đầu của chúng ta đã được sắp xếp một cách ngăn nắp và hoàn thành</p>
-<p class="font-weight-bold ">Thuật toán của Merge Sort and Code?</p>
-<p>Merge Sort sắp xếp tiếp tục chia danh sách thành hai nửa mảng bằng nhau cho đến khi không thể chia thêm được nữa. Theo định nghĩa nó nói là, nếu chỉ là một yếu tố trong danh sách, nó được sắp xếp. Sau đó, Merge Sort các danh sách được sắp xếp nhỏ hơn
-    thành danh sách mới đã được sắp xếp</p>
-<ul>
-    <p class="font-weight-bold"> Algorithm:</p>
-    <li> Step 1: Nếu nó là một thành phần duy nhất trong mảng thì trả vè 1, không sắp xếp nữa </li>
-    <li> Step 2: Thực hiện chia mảng bằng phương pháp đệ quy thành 2 nửa mảng bằng nhau đến khi nào không chia được nữa</li>
-    <li> Step 3: Hợp nhất các các ảng nhỏ hơn vào mảng tạm theo thứ tự sắp xếp</li>
-    <li> Step 4: Danh sách tạm sẽ trả lại các phần tử được sắp xếp cho mảng chính</li>
-</ul>
-<p class="font-weight-bold">Code</p>
-<div class="shadow" id="code">
-    <img src="static/images/blog/mergeSort/code.png" alt="" width="830">
+<div class="col-md-6 text-white">
+    <section class="mb-0">
+        <p class="text-muted">MAY 4, 2020 at 17:14 PM</p>
+    </section>
+    <h1 class="font-weight-bold">
+        Merge Sort
+    </h1>
+    <p>
+        Tiếp tục chương thực hiện chia sẻ về thuật toán và thưởng thức loạt bài giảng CS50 về các thuật toán.
+    </p>
+    <p class="text-primary font-weight-bold">Phong Pham</p>
 </div>
+<div class="col-md-6">
+    <img src="static/images/blog/title/Dark-Mode-technical.png" alt="" width="500">
+</div>
+
+<div style="color: #f2f2f3;" class="p-3">
+    <hr>
+    <img src="static/images/blog/mergeSort/merge_sort.png" alt="preview blog" class="center" width="1000">
+    <hr>
+    <p class="lead">
+        Tiếp tục chương thực hiện chia sẻ về thuật toán và thưởng thức loạt bài giảng CS50 về các thuật toán. Merge Sort (Sắp xếp hợp nhất) là tên gọi của một công thức mà qua đó chung ta có thể sắp xếp một bộ số đã cho theo thứ tự tăng (Increase) hoặc giảm (Decrease).
+        Được phát minh bởi ông Jonh Von Neumann (1945).
+    </p>
+    <p>
+        Merge Sort hoạt động dựa trên phương pháp phân chia và để trị (Devide and Conquer), nói nôm na là chúng ta giải quyết vấn đề bằng cách bâm nhỏ nó thành các vấn đề nhỏ nhất có thể (sub-problem), sau đó thực hiện giải quyết từng vấn đề phụ bằng cách đệ
+        quy và kết hợp (Recursion Merge) cuối cùng để đạt được giải pháp cuối cùng mà chúng ta mong muốn. Đây là một trong số thuật toán thường được các chị công ty công nghệ thường hỏi trong quá trình phỏng vấn.
+    </p>
+    <p class="font-weight-bold">Ứng dụng Merge Sort ?</p>
+    <p> Nếu các bạn đã tìm hiểu về Binary Search, Merge Sort được ứng dụng cơ bản để sắp xếp bên trong nó vì độ phức tạp của Merge Sort O(nlogn).</p>
+
+    <p> Trước khi đi chúng ta bắt đầu vào khái niệm chúng ta sẽ chú ý một sô thuật ngữ được đề cập đến trong bài và một số sẽ được dùng đặt biến bên trong Source Code:</p>
+    <img src="static/images/blog/mergeSort/notes.png" alt="" class="center">
+    <ul class="p-4">
+        <li> start: là thành phần đầu tiên bên phải của mảng </li>
+        <li> mid: được dùng để xác định giúp phân chia hai nửa mảng bằng nhau, mid được tính như sau: mid = (start + end) / 2.</li>
+        <li> end: là thành phần cuối cùng bên trái của mảng </li>
+    </ul>
+    <hr>
+    <p class="font-weight-bold">Merge Sort là cái gì ?</p>
+    <hr>
+    <p>
+        Merge Sort là một kỹ thuật sắp xếp dựa trên kỹ thuật phân chia và để trị (Devide and Conquer). Với độ phức tạp thời gian trong trường hợp xấu nhất ( Wort Case ) là O(nlogn). Merge sort là một trong những thuật toán đáng chú ý nhất. Merge Sort trước tiên
+        sẽ bâm nhỏ mảng chưa được sắp xếp thành hai nửa mảng bằng nhau và sau đó kết hợp chúng lại theo cách sắp xếp.
+    </p>
+    <p>Để bạn có thể hiểu cách nó hoạt động theo cách dễ dàng tôi sẽ bắt đầu cho một mảng chưa được sắp xếp như bên dưới có kích thước tối đa là 8 phần tử (item):</p>
+    <hr>
+    <img src="static/images/blog/mergeSort/unsort.png" alt="" class="center">
+    <hr>
+    <p>
+        Như khái niệm tôi đã giới thiệu với bạn Merge Sort trước tiên nó sẽ chia toàn bộ mảng thành hai nửa mảng bằng nhau. Ở đây bạn thấy rằng một mảng gồm 8 phần tử được chia thành hai mảng bằng nhau với mỗi mảng có 4 phần tử. Nhưng thực sự tới đây công việc
+        chúng ta chưa hoàn thành, Như khái niệm của kỹ thuật phân chia và để trị (Devide and Conquer)" là nó sẽ chia các vấn đề thành các vấn đề nhỏ nhất có thể" vì vậy trong hai nữa mảng này chúng ta sẽ tiếp tục thực hiện chia tiếp đến khi nào không
+        thể chia được nữa.
+    </p>
+    <hr>
+    <img src="static/images/blog/mergeSort/mid.png" alt="" class="center">
+    <hr>
+    <p>Bây giờ chúng ta sẽ chia hai mảng này thành một nữa. Ở đó bạn sẽ thấy chúng ta có 4 mảng bằng nhau với 2 phần tử mỗi mảng.</p>
+    <hr>
+    <img src="static/images/blog/mergeSort/4.png" alt="" class="center">
+    <hr>
+    <p>Nhưng chúng ta không dừng lại được phải tiếp tục chia 4 mảng thành 8 mảng bằng nhau mỗi mảng có 1 phần tử và không thể chia thêm được nữa:</p>
+    <hr>
+    <img src="static/images/blog/mergeSort/devide.png" alt="" class="center">
+    <hr>
+    <p>Ngay bây giờ chúng ta sẽ kết hợp (Merge) chúng lại với nhau theo cách mà chúng ta đã chia nó ra. Nó chỉ là quá trinh đi ngược lại từ bên dưới lên</p>
+    <p class="font-weight-bold">Vậy Merge Sort ở đâu ?</p>
+    <p>Trong quá trình mà chúng ta kết hợp mảng được chia lại song song đó sẽ thực hiện quá trình sắp xếp (Sort) đó chính là tên gọi của nó Merge Sort.</p>
+    <p>Quá trình sẽ bắt đầu với việc chúng ta sẽ so sánh các phần tử của mỗi mảng và sau đó kết hợp chúng vào một danh sách khác được sắp xếp (temple array) để lưu tạm ở đó đã, quá trình này hoạt động bằng cách sắp xếp đến đâu sẽ gợp lại đến đó và lưu vào
+        mảng lưu trữ tạm.</p>
+    <hr>
+    <img src="static/images/blog/mergeSort/sort1.png" alt="" class="center">
+    <hr>
+    <p>
+        Chúng ta sẽ thấy rằng 5 và 2 chưa được sắp xếp vì vậy chúng ta sẽ sắp xếp nó và lưu vào mảng tạm (Temple Array). Tiếp theo chúng ta thấy 4 và 1 chưa được sắp xếp và chúng ta cũng thực hiện quá trình tương tự như trên và luu vào mảng tạm. Cuối cùng chúng
+        ta sẽ có 4 mảng bằng nhau với 2 phần tử mỗi mảng
+    </p>
+    <p>Trong lần lặp tiếp theo của việc Merge Sort, chúng ta sẽ so sánh sánh giữa 2 mảng mỗi mảng có 2 phần tử và hợp nhất chúng lại thành một danh sách các giá trị được sắp xếp. Tiếp theo chúng ta cũng thực hiện quá trình tương tự cho 2 mảng tiếp theo.
+    </p>
+    <hr>
+    <img src="static/images/blog/mergeSort/sort2.png " alt=" " class="center">
+    <hr>
+    <p>Dây là lần lặp cuối cùng, như chúng ta thấy ở trên có 2 nửa mảng bằng nhau mỗi mảng có 4 phần tử , chúng ta sẽ thực hiện quá trình so sánh 2 mảng này và hợp nhất chúng lại thành mảng cuối cùng.</p>
+    <hr>
+    <img src="static/images/blog/mergeSort/merge.png " alt=" " class="center">
+    <hr>
+    <p>Sau khi hợp nhất, mảng tạm được sắp xếp ( Temple Array) sẽ trả lại giá trị cho mảng chính ban đầu của chúng ta đã được sắp xếp một cách ngăn nắp và hoàn thành</p>
+    <p class="font-weight-bold ">Thuật toán của Merge Sort and Code?</p>
+    <p>Merge Sort sắp xếp tiếp tục chia danh sách thành hai nửa mảng bằng nhau cho đến khi không thể chia thêm được nữa. Theo định nghĩa nó nói là, nếu chỉ là một yếu tố trong danh sách, nó được sắp xếp. Sau đó, Merge Sort các danh sách được sắp xếp nhỏ
+        hơn thành danh sách mới đã được sắp xếp</p>
+    <ul>
+        <p class="font-weight-bold"> Algorithm:</p>
+        <li> Step 1: Nếu nó là một thành phần duy nhất trong mảng thì trả vè 1, không sắp xếp nữa </li>
+        <li> Step 2: Thực hiện chia mảng bằng phương pháp đệ quy thành 2 nửa mảng bằng nhau đến khi nào không chia được nữa</li>
+        <li> Step 3: Hợp nhất các các ảng nhỏ hơn vào mảng tạm theo thứ tự sắp xếp</li>
+        <li> Step 4: Danh sách tạm sẽ trả lại các phần tử được sắp xếp cho mảng chính</li>
+    </ul>
+    <p class="font-weight-bold">Code</p>
+    <img src="static/images/blog/mergeSort/code.png" alt="" class="center">
+</div>
+
+<div id="comment"></div>

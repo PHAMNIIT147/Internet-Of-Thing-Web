@@ -4,7 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Blog</title>
+    <title>Blog - ZiShip</title>
+    <link rel="icon" href="static/images/logo/logo.png">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="assets/css/bootstrap.css">
     <style>
@@ -12,7 +13,6 @@
             display: block;
             margin-left: auto;
             margin-right: auto;
-            width: 50%;
         }
     </style>
 </head>
@@ -38,44 +38,47 @@
         </header>
         <div class="nav-scroller py-1 mb-2">
             <nav class="nav d-flex justify-content-between">
-                <a class="p-2 text-muted" href="#algorithm">Algorithms</a>
+                <a class="p-2 text-muted" href="/blog.html">Algorithms</a>
                 <a class="p-2 text-muted" href="#">Languages programming</a>
                 <a class="p-2 text-muted" href="#">Farmeworks</a>
                 <a class="p-2 text-muted" href="#">Technologys</a>
                 <a class="p-2 text-muted" href="#">Others</a>
             </nav>
         </div>
-        <section id="algorithm">
-            <div class="row">
-                <!-- content -->
-                <div id="mergeSort" class="col-9" style="color: #f2f2f3;"></div>
-                <!-- Sidebar Widgets Column -->
-                <div class="col-3 p-4">
-                    <!-- Categories Widget -->
-                    <div class="card my-4">
-                        <h5 class="card-header">Content</h5>
+        <section id="algorithm" class="p-5">
+            <div class="row" id="viewMS">
+                <!-- insert sort -->
+                <div class="col-md-6">
+                    <div class="card mb-4">
+                        <img class="card-img-top" src="static/images/blog/title/Dark-Mode-technical.png" alt="label mergesort" height="300" width="750">
                         <div class="card-body">
-                            <div class="row">
-                                <ul class="list-unstyled mb-0">
-                                    <li>
-                                        <a href="#">Gioi thieu</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">HTML</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">Freebies</a>
-                                    </li>
-                                </ul>
-                            </div>
+                            <h2 class="card-title">Lorem</h2>
+                            <p class="card-text">Merge Sort (Sắp xếp hợp nhất) là tên gọi của một công thức mà qua đó chung ta có thể sắp xếp một bộ số đã cho theo thứ tự tăng (Increase) hoặc giảm (Decrease). Được phát minh bởi ông Jonh Von Neumann (1945).</p>
+                            <a id="insertSort" class="btn btn-primary text-white">Read More &rarr;</a>
+                        </div>
+                        <div class="card-footer text-muted">
+                            Posted on May 5, 2020 by <a href="#">Phong Pham</a>
                         </div>
                     </div>
                 </div>
-
+                <!-- merge sort -->
+                <div class="col-md-6">
+                    <div class="card mb-4">
+                        <img class="card-img-top" src="static/images/blog/mergeSort/merge_sort.png" alt="label mergesort" height="300" width="750">
+                        <div class="card-body">
+                            <h2 class="card-title">Merge Sort(Sắp xếp hợp nhất)</h2>
+                            <p class="card-text">Merge Sort (Sắp xếp hợp nhất) là tên gọi của một công thức mà qua đó chung ta có thể sắp xếp một bộ số đã cho theo thứ tự tăng (Increase) hoặc giảm (Decrease). Được phát minh bởi ông Jonh Von Neumann (1945).</p>
+                            <a id="mergeSort" class="btn btn-primary text-white">Read More &rarr;</a>
+                        </div>
+                        <div class="card-footer text-muted">
+                            Posted on May 4, 2020 by <a href="#">Phong Pham</a>
+                        </div>
+                    </div>
+                </div>
             </div>
+            <div id="comment" class="container p-4"></div>
         </section>
     </div>
-
     <div id="footer"></div>
     <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.4.1.min.js "></script>
     <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
