@@ -31,6 +31,7 @@ function realData(data) {
     realTimeChart(hum, dynamicHum, date);
 
     statusWarning(heat);
+    console.log(heat);
 }
 
 function realTimeChart(data, chart, date) {
@@ -80,9 +81,9 @@ function realTimeChart(data, chart, date) {
 function statusWarning(data) {
     if (data > 26 && data < 32) {
         warning.innerHTML = "<h2 style='color:#ffff66;'>Caution: fatigue is possible with prolonged exposure and activity. Continuing activity could result in heat cramps.</h2>"
-    } else if (data > 32 && data > 41) {
+    } else if (data > 32 && data < 41) {
         warning.innerHTML = "<h2 style='color:gold;'>Extreme caution: heat cramps and heat exhaustion are possible. Continuing activity could result in heat stroke.</h2>"
-    } else if (data > 41 && data > 54) {
+    } else if (data > 41 && data < 54) {
         warning.innerHTML = "<h2 style='color:darkorange;'>	Danger: heat cramps and heat exhaustion are likely; heat stroke is probable with continued activity.</h2>"
     } else {
         warning.innerHTML = "<h2 style='color:red;'>	Extreme danger: heat stroke is imminent.</h2>"

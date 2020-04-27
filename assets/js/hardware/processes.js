@@ -47,9 +47,11 @@ function myData(data) {
     for (let i = 0; i < data.length; i++) {
         temperature.push(data[i].temperature);
         humidity.push(data[i].humidity);
-        heat.push(data[i].heat);
+        heat.push(data[i].humiture);
         label.push(date);
     }
+
+    console.log(heat);
 
     return { temperature, humidity, heat, label, date }
 }
