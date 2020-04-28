@@ -26,7 +26,7 @@
         Merge Sort hoạt động dựa trên phương pháp phân chia và để trị (Devide and Conquer), nói nôm na là chúng ta giải quyết vấn đề bằng cách bâm nhỏ nó thành các vấn đề nhỏ nhất có thể (sub-problem), sau đó thực hiện giải quyết từng vấn đề phụ bằng cách đệ
         quy và kết hợp (Recursion Merge) cuối cùng để đạt được giải pháp cuối cùng mà chúng ta mong muốn. Đây là một trong số thuật toán thường được các chị công ty công nghệ thường hỏi trong quá trình phỏng vấn.
     </p>
-    <p class="font-weight-bold">Ứng dụng Merge Sort ?</p>
+    <h4 class="font-weight-bold">Ứng dụng Merge Sort ?</h4>
     <p> Nếu các bạn đã tìm hiểu về Binary Search, Merge Sort được ứng dụng cơ bản để sắp xếp bên trong nó vì độ phức tạp của Merge Sort O(nlogn).</p>
 
     <p> Trước khi đi chúng ta bắt đầu vào khái niệm chúng ta sẽ chú ý một sô thuật ngữ được đề cập đến trong bài và một số sẽ được dùng đặt biến bên trong Source Code:</p>
@@ -36,9 +36,7 @@
         <li> mid: được dùng để xác định giúp phân chia hai nửa mảng bằng nhau, mid được tính như sau: mid = (start + end) / 2.</li>
         <li> end: là thành phần cuối cùng bên trái của mảng </li>
     </ul>
-    <hr>
-    <p class="font-weight-bold">Merge Sort là cái gì ?</p>
-    <hr>
+    <h4 class="font-weight-bold">Merge Sort là cái gì ?</h4>
     <p>
         Merge Sort là một kỹ thuật sắp xếp dựa trên kỹ thuật phân chia và để trị (Devide and Conquer). Với độ phức tạp thời gian trong trường hợp xấu nhất ( Wort Case ) là O(nlogn). Merge sort là một trong những thuật toán đáng chú ý nhất. Merge Sort trước tiên
         sẽ bâm nhỏ mảng chưa được sắp xếp thành hai nửa mảng bằng nhau và sau đó kết hợp chúng lại theo cách sắp xếp.
@@ -64,7 +62,7 @@
     <img src="static/images/blog/mergeSort/devide.png" alt="" class="center">
     <hr>
     <p>Ngay bây giờ chúng ta sẽ kết hợp (Merge) chúng lại với nhau theo cách mà chúng ta đã chia nó ra. Nó chỉ là quá trinh đi ngược lại từ bên dưới lên</p>
-    <p class="font-weight-bold">Vậy Merge Sort ở đâu ?</p>
+    <h4 class="font-weight-bold">Vậy Merge Sort ở đâu ?</h4>
     <p>Trong quá trình mà chúng ta kết hợp mảng được chia lại song song đó sẽ thực hiện quá trình sắp xếp (Sort) đó chính là tên gọi của nó Merge Sort.</p>
     <p>Quá trình sẽ bắt đầu với việc chúng ta sẽ so sánh các phần tử của mỗi mảng và sau đó kết hợp chúng vào một danh sách khác được sắp xếp (temple array) để lưu tạm ở đó đã, quá trình này hoạt động bằng cách sắp xếp đến đâu sẽ gợp lại đến đó và lưu vào
         mảng lưu trữ tạm.</p>
@@ -85,7 +83,7 @@
     <img src="static/images/blog/mergeSort/merge.png " alt=" " class="center">
     <hr>
     <p>Sau khi hợp nhất, mảng tạm được sắp xếp ( Temple Array) sẽ trả lại giá trị cho mảng chính ban đầu của chúng ta đã được sắp xếp một cách ngăn nắp và hoàn thành</p>
-    <p class="font-weight-bold ">Thuật toán của Merge Sort and Code?</p>
+    <h4 class="font-weight-bold ">Thuật toán của Merge Sort and Code?</h4>
     <p>Merge Sort sắp xếp tiếp tục chia danh sách thành hai nửa mảng bằng nhau cho đến khi không thể chia thêm được nữa. Theo định nghĩa nó nói là, nếu chỉ là một yếu tố trong danh sách, nó được sắp xếp. Sau đó, Merge Sort các danh sách được sắp xếp nhỏ
         hơn thành danh sách mới đã được sắp xếp</p>
     <ul>
@@ -95,8 +93,101 @@
         <li> Step 3: Hợp nhất các các ảng nhỏ hơn vào mảng tạm theo thứ tự sắp xếp</li>
         <li> Step 4: Danh sách tạm sẽ trả lại các phần tử được sắp xếp cho mảng chính</li>
     </ul>
-    <p class="font-weight-bold">Code</p>
-    <img src="static/images/blog/mergeSort/code.png" alt="" class="center">
+    <h4 class="font-weight-bold"> Source Code</h4>
+    <pre class="prettyprint text-muted">
+            #include < iostream >
+            using namespace std;
+            
+            #define MAX 10
+            
+            void display(int*);
+            void mergeSort(int* , int* , int ,int);
+            void merge(int*, int*, int, int, int);
+            
+            int main(int argc, char** argv) 
+            {
+              int array[MAX] = {5,2,1,3,4,6,8,7,9,10};
+              int temp[MAX];
+            
+              mergeSort(array, temp, 0, MAX - 1); //start:0 - end:9
+            
+              display(array);
+            
+              return 0;
+            }
+            
+            void display(int *arr)
+            {
+              for(int i = 0 ; i < MAX ; i++)
+              {
+                cout << arr[i] << " " ;
+              }
+              cout << endl;
+            }
+            
+            void mergeSort(int *arr, int*temp, int start, int end) 
+            {
+              int mid;
+              if (start < end) 
+              {    
+                mid = (start + end) / 2;
+                
+                mergeSort(arr, temp, start, mid);
+                mergeSort(arr, temp, mid + 1, end);
+                
+                merge(arr, temp, start, mid, end);
+              }
+              else
+              {
+                return;
+              }
+            }
+            
+            void merge(int *arr, int *temp, int start, int mid, int end) 
+            {
+              int h = start;
+              int index = start;
+              int j = mid + 1;
+              
+              while ((h <= mid) && (j <= end)) 
+              {
+                if (arr[h] <= arr[j]) 
+                {
+                  temp[index] = arr[h];
+                  h++;
+                } 
+                else 
+                {
+                  temp[index] = arr[j];
+                  j++;
+                }
+                index++;
+              }
+              
+              if (h > mid) 
+              {
+                //array right
+                for (int i = j; i <= end; i++) 
+                {
+                  temp[index] = arr[i];
+                  index++;
+                }
+              } 
+              else 
+              {
+                //array left
+                for (int i = h; i <= mid; i++) 
+                {
+                  temp[index] = arr[i];
+                  index++;
+                }
+              }
+            
+              // Write the final sorted array to our original one
+              for (int i = start; i <= end; i++) 
+              {
+                arr[i] = temp[i];
+              }
+            }            
+    </pre>
 </div>
-
-<div id="comment"></div>
